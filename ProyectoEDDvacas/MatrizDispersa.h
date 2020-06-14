@@ -15,8 +15,11 @@ public:
     Nodo* down;
     Nodo* above;
     Nodo* below;
+
     string nombreN;
     Usuarios* miUsu;
+
+    
 
     //miUsu=new Usuarios(string username, string pass, string name);
     Nodo(string qSoy)
@@ -27,6 +30,8 @@ public:
         this->down = nullptr;
         this->above = nullptr;
         this->below = nullptr;
+
+
         this->nombreN = qSoy;
     }
     Nodo(Usuarios* User)
@@ -36,7 +41,7 @@ public:
         this->up = nullptr;
         this->down = nullptr;
         this->above = nullptr;
-        this->below = nullptr;
+
         miUsu = User;
     }
     Usuarios* getUsuario()
@@ -70,14 +75,19 @@ public:
     }
 
     //Nodo* getnRentador();
-
+    void graficar();
     Nodo* createCompany(string empresa);
     Nodo* createDepartment(string depa);
     Nodo* searchCompany(string empresa, Nodo* first);
     Nodo* searchDepartment(string depa, Nodo* first);
     bool isCompany(string empresa, Nodo* first, Nodo* rentador);
     bool isDepartament(string depa, Nodo* first, Nodo* rentador);
-
+    Nodo* searchUsuario(string rentador, string company, string department); \
+    Nodo* toGraphic(string department, string company);
+    string getNodo();
+    string getConexion();
+   
+    void magia();
 
 };
 
