@@ -4,11 +4,11 @@
 #include "Usuarios.h"
 
 /*Metodos*/
-void Login();
+void LoginAdmin();
 void MenuAdmin();
 void MenuUsuario();
 void CrearUsuario();
-void Reporte();
+void Inicio();
 /*Variables*/
 string user;
 string password;
@@ -22,12 +22,55 @@ MatrizDispersa* matriz;
 int main()
 {
     matriz = new MatrizDispersa();
-    Login();
+    Inicio();
 }
-void Login()
+
+void Inicio() 
 {
-    cout << " \n \n ##################################################################### \n";
-    cout << "\t\t\t   Bienvenido \n" << endl;
+    cout << "\n\t\t   Bienvenido al Catalogo de Renta de Activos \n" << endl;
+    bool indicador = false;
+    int m;
+    while (indicador = true)
+    {
+       // cin.clear();
+        cout << "\t\t\t\t- Inicie Sesion -\n\n";
+        cout << "1  Administrador \n"; //subir archivo json
+        cout << "2  Usuario \n";
+        cout << "3  Salir\n";
+        cin >> m;
+        switch (m)
+        {
+        case 1:
+            system("cls");
+            LoginAdmin();
+            break;
+
+        case 2:
+            system("cls");
+            cout << "Menu Usuario";
+            break;
+
+        case 3:
+            system("cls");
+            cout << "Saliendo" << endl;
+            exit(0);
+           
+            break;
+
+        default:
+            system("cls");
+            cout << "Opcion no valida.\a\n";
+            //  pausa();
+            break;
+        }
+    }
+
+}
+
+void LoginAdmin()
+{
+    cout << " \n ------------------------------------------------------------------------ \n";
+    cout << "\t\t\t Bienvenido Administrador \n" << endl;
     cout << "Por favor, inicie sesion \n\n" << endl;
     cout << "Nombre de Usuario: ";
     cin >> user;
@@ -84,13 +127,13 @@ void MenuAdmin()
 
         case 2:
             system("cls");
-            cout << "mierda a reportar";
+            cout << "Reportes";
             break;
 
         case 3:
             system("cls");
             cout << "Cerrando Sesion" << endl;
-            Login();
+            Inicio();
             break;
 
         case 4:
