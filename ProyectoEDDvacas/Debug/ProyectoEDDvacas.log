@@ -1,4 +1,3 @@
 ﻿  AVL.cpp
 C:\Users\Jacky\source\repos\ProyectoEDDvacas\ProyectoEDDvacas\AVL.h(50,14): warning C4553: '==': result of expression not used; did you intend '='?
-C:\Users\Jacky\source\repos\ProyectoEDDvacas\ProyectoEDDvacas\AVL.cpp(146): warning C4715: 'AVL::insertarN': not all control paths return a value
   ProyectoEDDvacas.vcxproj -> C:\Users\Jacky\source\repos\ProyectoEDDvacas\Debug\ProyectoEDDvacas.exe

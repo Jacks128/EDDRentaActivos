@@ -32,86 +32,60 @@ void NodoAVL::add(Activos* acti) {
 
 }
 
-/*void AVL::inOrder(NodoAVL* a) 
+void AVL::inOrder(NodoAVL* a) 
+{
+	if (a != nullptr) {
+		inOrder(a->left);
+		cout << "Nodo ->" + a->getActive()->getID() + " , ";
+		inOrder(a->right);
+	}
+	//	return;
+	
+	
+}
+
+/*void AVL::inOrder(NodoAVL* a)
 {
 	if (a == nullptr)
 	{
-		return;
+	return;
 	}
-	
 		inOrder(a->left);
-		cout << "Nodo ->"+ a->getActive()->getID() + " , ";
+		cout << "Nodo ->" + a->getActive()->getID() + " , ";
 		inOrder(a->right);
-}
+	
+}*/
+
 
 void AVL::inOrder() {
 	cout << "Recorrido inorden del árbol binario de búsqueda: \n";
 	inOrder(root);
 
-}*/
-
-void AVL::insertar(Activos* act) {
-	NodoAVL* flu = new NodoAVL(act);
-	
-	if (root == nullptr) {
-		root = flu;
-	}
-	else {
-		root = insertarN(act, root);
-
-	}
-	cout << "nodo->" + flu->getActive()->getID() + " ";
 }
 
-/*NodoAVL* AVL::insertarN(Activos *activos, NodoAVL* root)
-{
-	if (root == nullptr)
-	{
-		this->root = new NodoAVL(activos);
-	}
-	else 
-	{
-		if (activos->getID().compare(root->getActive()->getID()) < 0)
-		{
-			root->left = insertarN(activos, root->left);
-			if (altura(root->right) - altura(root->left) == -2)
-			{
-				if (activos->getID().compare(root->left->getActive()->getID()) < 0) {
-					root = leftleft(root);
-				}
-				else
-				{
-					root = leftright(root);
-				}
-			}
-		}
-		else if (activos->getID().compare(root->getActive()->getID()) > 0)
-		{
-			root->right = insertarN(activos, root->right);
-			if (altura(root->right) - altura(root->left) == 2)
-			{
-				if (activos->getID().compare(root->right->getActive()->getID()) > 0)
-				{
-					root = rightright(root);
-					//insertarN(activos, root);
-				}
-				else
-				{
-					root = rightleft(root);
-					//insertarN(activos, root);
-				}
-			}
-		}
-		else
-		{
-			cout << "No se permiten los valores duplicados:";
-			root->altura = mayor(altura(root->left), altura(root->right)) + 1;
-			return root;
-		}
+/*void AVL::insertar(Activos* act) {
+	NodoAVL* flu = new NodoAVL(act);
+	
+		root = insertarN(act, root);
+	cout << "nodo->" + flu->getActive()->getID() + " ";
+}*/
 
+
+void AVL::insertar(Activos* activos) {
+	NodoAVL* flu = new NodoAVL(activos);
+	if(root==nullptr){
+		root=flu;
+	}
+	else {
+		root = insertarN(activos, root);
+		
+	}
+	cout << "nodo->" + flu->getActive()->getID() + " \n";
 	}
 	
-}*/
+
+
+
 
 NodoAVL* AVL::insertarN(Activos* activos, NodoAVL* flu) 
 {
@@ -124,7 +98,7 @@ NodoAVL* AVL::insertarN(Activos* activos, NodoAVL* flu)
 		else 
 		{
 			flu->left = insertarN(activos, flu->left);
-			if (altura(root->right) - altura(root->left) == 2)
+			if ((altura(flu->left) - altura(flu->right)) == 2)
 			{
 				if (activos->getID() < flu->left->getActive()->getID())
 				{
@@ -135,15 +109,100 @@ NodoAVL* AVL::insertarN(Activos* activos, NodoAVL* flu)
 					nAlv = leftright(flu);
 				}
 			}
+			
+
+		}
+	}
+	else if (flu->getActive()->getID().compare(activos->getID()) < 0)
+	{
+		if (flu->right == nullptr)
+		{
+			flu->right = new NodoAVL(activos);
+		}
+		else
+		{
+		flu->right = insertarN(activos, flu->right);
+		if (altura(flu->right) - altura(flu->left) == 2)
+		{
+			if (activos->getID() > flu->right->getActive()->getID())
+			{
+				nAlv = rightright(flu);
+				//insertarN(activos, root);
+			}
+			else
+			{
+				nAlv = rightleft(flu);
+				//insertarN(activos, root);
+			}
+		}
+	    }
+	}
+
+	else
+	{
+		cout << "Nodo insertado";
+		root->altura = mayor(altura(root->left), altura(root->right)) + 1;
+		return flu;
+	}
+	return nAlv;
+	inOrder(nAlv);
+}
+
+
+/*NodoAVL* AVL::insertarN(Activos* activos, NodoAVL* flu)
+
+{
+	NodoAVL* nAlv = flu;
+	if (flu->left == nullptr)
+		{
+			flu->left = new NodoAVL(activos);
+		}
+		else
+		{
+
+	if (flu->getActive()->getID().compare(activos->getID()) > 0)
+	{
+		
+			flu->left = insertarN(activos, flu->left);
+			if (altura(flu->right) - altura(flu->left) == -2)
+			{
+				if (activos->getID() < flu->left->getActive()->getID()) {
+					nAlv = leftleft(flu);
+				}
+				else
+				{
+					nAlv = leftright(flu);
+				}
+			}
+
+		
+	}
+	else if (flu->getActive()->getID().compare(activos->getID()) < 0)
+	{
+		flu->right = insertarN(activos, flu->right);
+		if (altura(flu->right) - altura(flu->left) == 2)
+		{
+			if (activos->getID() > flu->right->getActive()->getID())
+			{
+				nAlv = rightright(flu);
+				//insertarN(activos, root);
+			}
+			else
+			{
+				nAlv = rightleft(flu);
+				//insertarN(activos, root);
+			}
 		}
 	}
 	else
 	{
-	//	cout << "No se permiten los valores duplicados:";
-		root->altura = mayor(altura(root->left), altura(root->right)) + 1;
-		return root;
+		cout << "No se permiten los valores duplicados:";
+		//flu->altura = mayor(altura(flu->left), altura(flu->right)) + 1;
+		//return flu;
 	}
-}
+	}
+	return nAlv;
+}*/
 
 int AVL::altura(NodoAVL* nodo)
 {
@@ -173,9 +232,12 @@ NodoAVL* AVL::leftleft(NodoAVL* n1)
 {
 	NodoAVL* n2 = n1->left;
 	n1->left = n2->right;
-	n2->right = n1;
-	n1->altura = mayor(altura(n1->left), altura(n1->right)) + 1;
-	n2->altura = mayor(altura(n2->left), n1->altura) + 1;
+	n2->right = n1;//va xd
+	//no me dejo correrlo xdxdxdxd
+	//me 
+	//toy viendo xd
+	n1->altura = mayor(altura(n1->left), altura(n1->right)+ 1) ;
+	n2->altura = mayor(altura(n2->left), n1->altura+ 1) ;
 	return n2;
 }
 
@@ -187,16 +249,18 @@ NodoAVL* AVL::rightright(NodoAVL* n1)
 	NodoAVL* n2 = n1->right;
 	n1->right = n2->left;
 	n2->left = n1;
-	n1->altura = mayor(altura(n1->left), altura(n1->right)) + 1;
-	n2->altura = mayor(altura(n2->right), n1->altura) + 1;
+	n1->altura = mayor(altura(n1->left), altura(n1->right)+ 1) ;
+	n2->altura = mayor(altura(n2->right), altura(n1->right) + 1);
 	return n2;
 }
 
 //Rotación doble izuquierda derecha
 NodoAVL* AVL::leftright(NodoAVL* n1) 
 {
+	NodoAVL* aux;
 	n1->left = rightright(n1->left);
-	return leftleft(n1);
+	aux = leftleft(n1);
+	return aux;
 }
 //Rotación doble derecha izquierda 
 NodoAVL* AVL::rightleft(NodoAVL* n1)

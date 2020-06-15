@@ -14,7 +14,7 @@ public:
     NodoAVL* left;
     NodoAVL* right;
     Activos* active;
-    int altura;
+    int altura=0;
     void add(Activos* act);
 
     Activos* getActive() {
@@ -43,14 +43,14 @@ private:
     NodoAVL* rightright(NodoAVL* n2);
     NodoAVL* leftright(NodoAVL* n1);
     NodoAVL* rightleft(NodoAVL* n2);
-    //void inOrder(NodoAVL* a);
+    void inOrder(NodoAVL* a);
 public:
     NodoAVL* root;
     AVL() {
         root == nullptr;
     }
     void insertar(Activos* activos);
-   // void inOrder();
+    void inOrder();
 
 
 

@@ -41,11 +41,11 @@ int main()
 
 void Inicio() 
 {
-    matriz->Insertar(new Usuarios("pedro", "123", "pedro",arbolavl), "claro", "huehue");
-    matriz->Insertar(new Usuarios("jacky", "123", "jacky", arbolavl), "tigo", "huehue");
-    matriz->Insertar(new Usuarios("susel", "147", "susel", arbolavl), "jugueton", "chimal");
-    matriz->Insertar(new Usuarios("maria", "123", "maria", arbolavl), "jugueton", "chimal");
-    matriz->Insertar(new Usuarios("juan", "123", "juan",arbolavl), "claro", "peten");
+    matriz->Insertar(new Usuarios("pedro", "123", "pedro"), "claro", "huehue");
+    matriz->Insertar(new Usuarios("jacky", "123", "jacky"), "tigo", "huehue");
+    matriz->Insertar(new Usuarios("susel", "147", "susel"), "jugueton", "chimal");
+    matriz->Insertar(new Usuarios("maria", "123", "maria"), "jugueton", "chimal");
+    matriz->Insertar(new Usuarios("juan", "123", "juan"), "claro", "peten");
     cout << "\n\t\t   Bienvenido al Catalogo de Renta de Activos \n" << endl;
     bool indicador = false;
     int m;
@@ -66,7 +66,7 @@ void Inicio()
 
         case 2:
             system("cls");
-            LoginUsuario();
+            AgregarActivo();
             break;
 
         case 3:
@@ -278,7 +278,7 @@ void AgregarActivo() {
     cin >> descripcion;
     actu = new Activos(ID, nombreActivo, descripcion);
     arbolavl->insertar(actu);
-
+    arbolavl->inOrder();
 
     /*Pruebas*/
  //   arbolavl->insertar(new Activos("A2","SHIne","No pos pa esto y lo otor"));

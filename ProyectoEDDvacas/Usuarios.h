@@ -8,12 +8,8 @@ public:
     std::string contra;
     std::string nombre;
     AVL* avlAct;
-    Usuarios(std::string usuario, std::string contra, std::string nombre, AVL* avlAct);
+    Usuarios(std::string usuario, std::string contra, std::string nombre);
 
-    void setAvlAct(AVL* avlAct)
-    {
-        this->avlAct = avlAct;
-    }
     void setUsuario(std::string usuario)
     {
         this->usuario = usuario;
@@ -38,9 +34,6 @@ public:
     {
         return this->nombre;
     }
-    AVL* getAvlAct()
-    {
-        return this->avlAct;
-    }
+
 };
 
