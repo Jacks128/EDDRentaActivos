@@ -1,6 +1,8 @@
 
 #include <iostream>
 #include "MatrizDispersa.h"
+#include "Activos.h"
+#include "AVL.h"
 #include "Usuarios.h"
 
 /*Metodos*/
@@ -8,6 +10,7 @@ void LoginAdmin();
 void LoginUsuario();
 void MenuAdmin();
 void MenuUsuario();
+void AgregarActivo();
 void CrearUsuario();
 void Inicio();
 /*Variables*/
@@ -16,19 +19,33 @@ string password;
 string nombre;
 string empresa;
 string departamento;
+
+string nombreActivo;
+string ID;
+string descripcion;
+
 Nodo* tu;
 Usuarios* usu;
+Activos* actu;
 MatrizDispersa* matriz;
-
+AVL* arbolavl;
+NodoAVL* nodo;
 
 int main()
 {
     matriz = new MatrizDispersa();
+    arbolavl = new AVL();
+  //  nodo = new NodoAVL(*nodo);
     Inicio();
 }
 
 void Inicio() 
 {
+    matriz->Insertar(new Usuarios("pedro", "123", "pedro",arbolavl), "claro", "huehue");
+    matriz->Insertar(new Usuarios("jacky", "123", "jacky", arbolavl), "tigo", "huehue");
+    matriz->Insertar(new Usuarios("susel", "147", "susel", arbolavl), "jugueton", "chimal");
+    matriz->Insertar(new Usuarios("maria", "123", "maria", arbolavl), "jugueton", "chimal");
+    matriz->Insertar(new Usuarios("juan", "123", "juan",arbolavl), "claro", "peten");
     cout << "\n\t\t   Bienvenido al Catalogo de Renta de Activos \n" << endl;
     bool indicador = false;
     int m;
@@ -147,17 +164,17 @@ void MenuUsuario()
         cout << "1  Agregar Activo \n"; //subir archivo json
         cout << "2  Eliminar Activo\n";
         cout << "3  Modificar Activo\n";
-        cout << "2  Rentar Activo\n";
-        cout << "2  Activos Rentados \n";
-        cout << "2  Mis Activos Rentados\n";
-        cout << "3  Cerrar Sesion \n";
-        cout << "4  Salir\n";
+        cout << "4  Rentar Activo\n";
+        cout << "5  Activos Rentados \n";
+        cout << "6  Mis Activos Rentados\n";
+        cout << "7  Cerrar Sesion \n";
+        cout << "8  Salir\n";
         cin >> m;
         switch (m)
         {
         case 1:
             system("cls");
-            CrearUsuario();
+            AgregarActivo();
             break;
 
         case 2:
@@ -172,6 +189,26 @@ void MenuUsuario()
             break;
 
         case 4:
+            cout << "Gracias por jugar scrabble" << endl;
+            exit(0);
+            break;
+        case 5:
+            system("cls");
+            CrearUsuario();
+            break;
+
+        case 6:
+            system("cls");
+            cout << "Reportes";
+            break;
+
+        case 7:
+            system("cls");
+            cout << "Cerrando Sesion" << endl;
+            Inicio();
+            break;
+
+        case 8:
             cout << "Gracias por jugar scrabble" << endl;
             exit(0);
             break;
@@ -230,6 +267,28 @@ void MenuAdmin()
         }
     }
 }
+
+void AgregarActivo() {
+    cout << "\t\t-Creacion de Activo-\n\n";
+    cout << "Ingrese el Nombre del Activo: " << endl;
+    cin >> nombreActivo;
+    cout << "Ingrese el ID de Activo: " << endl;
+    cin >> ID;
+    cout << "Ingrese su Descripcion: " << endl;
+    cin >> descripcion;
+    actu = new Activos(ID, nombreActivo, descripcion);
+    arbolavl->insertar(actu);
+
+
+    /*Pruebas*/
+ //   arbolavl->insertar(new Activos("A2","SHIne","No pos pa esto y lo otor"));
+   // arbolavl->insertar(new Activos("Z2", "SHIne", "No pos pa esto y lo otor"));
+    //arbolavl->insertar(new Activos("B5", "SHIne", "No pos pa esto y lo otor"));
+   // arbolavl->insertar(new Activos("W5", "SHIne", "No pos pa esto y lo otor"));
+   // arbolavl->inOrder();
+   //  nodo->graficar();
+}   
+
 void CrearUsuario()
 {
     cout<<"\t\t-Creacion de Usuarios-\n\n";
