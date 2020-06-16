@@ -1,10 +1,8 @@
 digraph G{ 
  node [shape = egg, color = purple];
-Nodoj [ label = "j" ]; 
-Nodoa [ label = "a" ]; 
-Nodos [ label = "s" ]; 
-Nodok [ label = "k" ]; 
-Nodoj-> Nodoa; 
-Nodoj-> Nodos; 
-Nodos-> Nodok; 
+NodoqnLqjY3HDiWLJBQ [ label = "qnLqjY3HDiWLJBQ"  ]; 
+NodotPiv8YNYpUsEqSb [ label = "tPiv8YNYpUsEqSb"  ]; 
+NodownS0BYiGDBPLSJe [ label = "wnS0BYiGDBPLSJe"  ]; 
+NodoqnLqjY3HDiWLJBQ-> NodotPiv8YNYpUsEqSb; 
+NodotPiv8YNYpUsEqSb-> NodownS0BYiGDBPLSJe; 
 }

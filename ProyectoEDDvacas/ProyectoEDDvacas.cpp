@@ -4,6 +4,7 @@
 #include "Activos.h"
 #include "AVL.h"
 #include "Usuarios.h"
+#include <time.h>
 
 /*Metodos*/
 void LoginAdmin();
@@ -13,6 +14,8 @@ void MenuUsuario();
 void AgregarActivo();
 void CrearUsuario();
 void Inicio();
+void EliminarActivo();
+string Aleatorio();
 /*Variables*/
 string user;
 string password;
@@ -35,6 +38,7 @@ int main()
 {
     matriz = new MatrizDispersa();
     arbolavl = new AVL();
+    Aleatorio();
 
   //  nodo = new NodoAVL(*nodo);
     Inicio();
@@ -180,7 +184,8 @@ void MenuUsuario()
 
         case 2:
             system("cls");
-            cout << "Reportes";
+            cout << "Eliminar Activos";
+            EliminarActivo();
             break;
 
         case 3:
@@ -273,11 +278,9 @@ void AgregarActivo() {
     cout << "\t\t-Creacion de Activo-\n\n";
     cout << "Ingrese el Nombre del Activo: " << endl;
     cin >> nombreActivo;
-    cout << "Ingrese el ID de Activo: " << endl;
-    cin >> ID;
     cout << "Ingrese su Descripcion: " << endl;
     cin >> descripcion;
-    actu = new Activos(ID, nombreActivo, descripcion);
+    actu = new Activos(Aleatorio(), nombreActivo, descripcion);
 
     arbolavl->insertar(actu);
     arbolavl->inOrder();
@@ -324,5 +327,34 @@ void CrearUsuario()
 
 }
 
+string Aleatorio() {
+    char strrnd[15];
+    int x;
+    string ale="";
+    srand(time(NULL));
+    for (int i = 0; i < 15; i++){
+        int x= 48 + rand() % (122 - 48);
+        int y= 65 + rand() % (90 - 65);
+        if ((x >= 48 && x <= 57) ||(x>=65 && x<=90)||(x>=97 && x<=122)) {
+            strrnd[i] = x;
+          //  ale = "A";
+        }
+        else {
+            strrnd[i] = y;
+        }
+        ale=ale+ strrnd[i];
+    }
+    cout << ale;
+   //cin.get();
+    return  ale;
+}
+void EliminarActivo() {
+    int x;
+    cout << "\t\t\t- Bienvenido a la seccion Eliminar -\n\n";
+    arbolavl->inOrder();
+    cout << "\t\t\t- Elija el ID a eliminar -\n\n";
+    cin >> x;
 
+
+}
 

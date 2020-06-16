@@ -37,10 +37,13 @@ void NodoAVL::add(Activos* acti) {
 
 void AVL::inOrder(NodoAVL* a) 
 {
+//	int x = 1;
 	if (a != nullptr) {
+		
 		inOrder(a->left);
-		cout << "Nodo ->" + a->getActive()->getID() + " , ";
+		cout << "ID ->" + a->getActive()->getID() + " Nombre: "+ a->getActive()->getNombreActivo() +  " Descripcion: "+ a->getActive()->getDescripcion() +" \n";
 		inOrder(a->right);
+		//x++;
 	}
 	//	return;
 	
@@ -296,7 +299,7 @@ void AVL::addNode(NodoAVL* nodo) {
 	if (nodo != 0)
 	{
 		juntadoralv1 += "Nodo" + nodo->getActive()->getID();
-		juntadoralv1 += " [ label = \"" + nodo->getActive()->getID() + "\" ]; \n";
+		juntadoralv1 += " [ label = \"" + nodo->getActive()->getID() + "\"  ]; \n";
 		AVL::addNode(nodo->left);
 		AVL::addNode(nodo->right);
 	}
