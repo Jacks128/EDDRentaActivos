@@ -282,8 +282,8 @@ Nodo* MatrizDispersa::searchUsuario(string rentador, string company, string depa
                     cout << "Pos si esta we" << endl;
                     return Busu;
                 }
-                while (Busu->above != nullptr) {    //tambien erificamos si hay mas en esa misma posicion
-                    Busu = Busu->above;
+                while (Busu->below != nullptr) {    //tambien erificamos si hay mas en esa misma posicion
+                    Busu = Busu->below;
                     if (Busu->getUsuario()->getUsuario() == rentador) //y sisi pos retorna el usuario
                     {
                         cout << "Pos si esta we" << endl;
@@ -326,6 +326,7 @@ Nodo* MatrizDispersa::toGraphic(string department, string compan)
 
     return nullptr;
 }
+
 
 
 void MatrizDispersa::graficar() 

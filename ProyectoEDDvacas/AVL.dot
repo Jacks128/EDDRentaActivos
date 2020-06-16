@@ -1,0 +1,10 @@
+digraph G{ 
+ node [shape = egg, color = purple];
+Nodoj [ label = "j" ]; 
+Nodoa [ label = "a" ]; 
+Nodos [ label = "s" ]; 
+Nodok [ label = "k" ]; 
+Nodoj-> Nodoa; 
+Nodoj-> Nodos; 
+Nodos-> Nodok; 
+}

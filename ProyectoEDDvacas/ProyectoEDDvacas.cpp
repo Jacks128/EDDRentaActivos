@@ -35,6 +35,7 @@ int main()
 {
     matriz = new MatrizDispersa();
     arbolavl = new AVL();
+
   //  nodo = new NodoAVL(*nodo);
     Inicio();
 }
@@ -66,7 +67,7 @@ void Inicio()
 
         case 2:
             system("cls");
-            AgregarActivo();
+            LoginUsuario();
             break;
 
         case 3:
@@ -194,7 +195,7 @@ void MenuUsuario()
             break;
         case 5:
             system("cls");
-            CrearUsuario();
+            arbolavl->graficaravl();
             break;
 
         case 6:
@@ -277,6 +278,7 @@ void AgregarActivo() {
     cout << "Ingrese su Descripcion: " << endl;
     cin >> descripcion;
     actu = new Activos(ID, nombreActivo, descripcion);
+
     arbolavl->insertar(actu);
     arbolavl->inOrder();
 
@@ -308,7 +310,7 @@ void CrearUsuario()
             cout<<"EL Usuario: "+usu->nombre+" se encuentra en " + empresa+ " y su username es: " + departamento+"\n\n"<<endl;
 
             /**P R U E B A S**/
-
+           
             matriz->Insertar(new Usuarios("pedro","123","pedro"),"claro","huehue");
            matriz->Insertar(new Usuarios("jacky","123","jacky"),"tigo","huehue");
             matriz->Insertar(new Usuarios("susel","147","susel"),"jugueton","chimal");

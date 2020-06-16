@@ -86,6 +86,7 @@ public:
     Nodo* toGraphic(string department, string company);
     string getNodo();
     string getConexion();
+    
    
     void magia();
 

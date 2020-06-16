@@ -1,7 +1,10 @@
 #include "AVL.h"
 #include <fstream>
 
-
+string juntadoralv1;
+AVL::AVL() {
+	this->root == nullptr;
+}
 void NodoAVL::add(Activos* acti) {
 	NodoAVL* nActivos = new NodoAVL(acti);
 	if (nActivos->getActive()->getID().compare(acti->getID())<0)
@@ -271,5 +274,52 @@ NodoAVL* AVL::rightleft(NodoAVL* n1)
 
 
 
+void AVL::graficaravl() {
 
+	ofstream archivo("AVL.dot");
 
+	archivo << "digraph G{ \n node [shape = egg, color = purple];\n";
+	addNode(this->root);
+	archivo << juntadoralv1;
+	juntadoralv1 = "";
+	AVL::caca(root);
+	archivo << juntadoralv1;
+	juntadoralv1 = "";
+	archivo << "}";
+	archivo.close();
+
+	system("C:\\\"Program Files (x86)\"\\Graphviz2.38\\bin\\dot.exe  -Tpng AVL.dot -o AVL.png");
+	system("AVL.png &");
+}
+
+void AVL::addNode(NodoAVL* nodo) {
+	if (nodo != 0)
+	{
+		juntadoralv1 += "Nodo" + nodo->getActive()->getID();
+		juntadoralv1 += " [ label = \"" + nodo->getActive()->getID() + "\" ]; \n";
+		AVL::addNode(nodo->left);
+		AVL::addNode(nodo->right);
+	}
+}
+
+void AVL::caca(NodoAVL* tree) {
+	//NodoAVL u = new NodoAVL();
+	if (tree != 0)
+	{
+		
+		if (tree->left != nullptr)
+		{
+		//	AVL::caca(tree->left);
+			juntadoralv1 += "Nodo" + tree->getActive()->getID();
+			juntadoralv1 += "-> Nodo" + tree->left->getActive()->getID()+ "; \n";
+		}
+		if (tree->right != 0)
+		{
+			juntadoralv1 += "Nodo" + tree->getActive()->getID();
+			juntadoralv1 += "-> Nodo" + tree->right->getActive()->getID()+"; \n";
+		}
+
+		AVL::caca(tree->left);
+		AVL::caca(tree->right);
+	}
+}

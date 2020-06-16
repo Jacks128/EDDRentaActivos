@@ -9,6 +9,7 @@ class NodoAVL
 private:
     int correlativo = 1;
     int id;
+    
 
 public:
     NodoAVL* left;
@@ -16,6 +17,9 @@ public:
     Activos* active;
     int altura=0;
     void add(Activos* act);
+    string caca();
+    string grafiquita();
+    
 
     Activos* getActive() {
         return this->active;
@@ -46,12 +50,15 @@ private:
     void inOrder(NodoAVL* a);
 public:
     NodoAVL* root;
-    AVL() {
-        root == nullptr;
+    NodoAVL* get() {
+        return this->root;
     }
+    AVL();
     void insertar(Activos* activos);
     void inOrder();
-
+    void graficaravl();
+    void caca(NodoAVL* node);
+    void addNode(NodoAVL* node);
 
 
 };
