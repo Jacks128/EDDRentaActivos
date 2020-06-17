@@ -1,6 +1,7 @@
 #pragma once
 #include <iostream>
 
+
 using namespace std;
 class Activos
 {
@@ -8,6 +9,7 @@ public:
     string id;
     string nombreActivo;
     string descripcion;
+
     Activos(string id, string nombreActivo, string descripcion);
 
 

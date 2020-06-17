@@ -327,6 +327,11 @@ Nodo* MatrizDispersa::toGraphic(string department, string compan)
     return nullptr;
 }
 
+void asignActives(Activos* activo, Usuarios* rentador) {
+    Nodo* empre;
+    Nodo* depa;
+   
+}
 
 
 void MatrizDispersa::graficar() 

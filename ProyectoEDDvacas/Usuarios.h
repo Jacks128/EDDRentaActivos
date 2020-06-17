@@ -10,6 +10,10 @@ public:
     AVL* avlAct;
     Usuarios(std::string usuario, std::string contra, std::string nombre);
 
+    void setAvlAct(AVL* avlAct) {
+        this->avlAct = avlAct;
+    }
+   
     void setUsuario(std::string usuario)
     {
         this->usuario = usuario;
@@ -33,6 +37,10 @@ public:
     std::string getNombre()
     {
         return this->nombre;
+    }
+    AVL* getAvlAct()
+    {
+        return this->avlAct;
     }
 
 };

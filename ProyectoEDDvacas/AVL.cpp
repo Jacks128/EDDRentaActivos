@@ -238,10 +238,7 @@ NodoAVL* AVL::leftleft(NodoAVL* n1)
 {
 	NodoAVL* n2 = n1->left;
 	n1->left = n2->right;
-	n2->right = n1;//va xd
-	//no me dejo correrlo xdxdxdxd
-	//me 
-	//toy viendo xd
+	n2->right = n1; 
 	n1->altura = mayor(altura(n1->left), altura(n1->right)+ 1) ;
 	n2->altura = mayor(altura(n2->left), n1->altura+ 1) ;
 	return n2;

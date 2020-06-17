@@ -16,6 +16,7 @@ void CrearUsuario();
 void Inicio();
 void EliminarActivo();
 string Aleatorio();
+void IsLogged();
 /*Variables*/
 string user;
 string password;
@@ -26,18 +27,18 @@ string departamento;
 string nombreActivo;
 string ID;
 string descripcion;
-
+AVL* arbolavl;
 Nodo* tu;
 Usuarios* usu;
 Activos* actu;
 MatrizDispersa* matriz;
-AVL* arbolavl;
+
 NodoAVL* nodo;
 
 int main()
 {
     matriz = new MatrizDispersa();
-    arbolavl = new AVL();
+   // arbolavl = new AVL();
     Aleatorio();
 
   //  nodo = new NodoAVL(*nodo);
@@ -90,7 +91,9 @@ void Inicio()
     }
 
 }
-
+void isLogged() {
+  
+}
 void LoginAdmin()
 {
     cout << " \n ------------------------------------------------------------------------ \n";
@@ -200,7 +203,7 @@ void MenuUsuario()
             break;
         case 5:
             system("cls");
-            arbolavl->graficaravl();
+            tu->getUsuario()->getAvlAct()->graficaravl();
             break;
 
         case 6:
@@ -280,10 +283,10 @@ void AgregarActivo() {
     cin >> nombreActivo;
     cout << "Ingrese su Descripcion: " << endl;
     cin >> descripcion;
-    actu = new Activos(Aleatorio(), nombreActivo, descripcion);
-
-    arbolavl->insertar(actu);
-    arbolavl->inOrder();
+   
+    tu->getUsuario()->getAvlAct()->insertar(new Activos(Aleatorio(), nombreActivo, descripcion));
+   // arbolavl->insertar( );
+    tu->getUsuario()->getAvlAct()->inOrder();
 
     /*Pruebas*/
  //   arbolavl->insertar(new Activos("A2","SHIne","No pos pa esto y lo otor"));

@@ -1,7 +1,7 @@
 #pragma once
 #include <iostream>
 #include "Usuarios.h"
-
+#include "AVL.h"
 
 using namespace std;
 
@@ -46,7 +46,7 @@ public:
     }
     Usuarios* getUsuario()
     {
-        return this->miUsu;
+        return miUsu;
     }
 
 protected:
@@ -59,6 +59,7 @@ class MatrizDispersa
 public:
     Nodo* header;
     Nodo* nRentador;
+    AVL* arbolavl;
     MatrizDispersa()
     {
         Usuarios* admin = new Usuarios("Admin", "admin", "jacky");
@@ -76,13 +77,14 @@ public:
 
     //Nodo* getnRentador();
     void graficar();
+    void asignActives(Activos* activo, Nodo* rentador);
     Nodo* createCompany(string empresa);
     Nodo* createDepartment(string depa);
     Nodo* searchCompany(string empresa, Nodo* first);
     Nodo* searchDepartment(string depa, Nodo* first);
     bool isCompany(string empresa, Nodo* first, Nodo* rentador);
     bool isDepartament(string depa, Nodo* first, Nodo* rentador);
-    Nodo* searchUsuario(string rentador, string company, string department); \
+    Nodo* searchUsuario(string rentador, string company, string department); 
     Nodo* toGraphic(string department, string company);
     string getNodo();
     string getConexion();
