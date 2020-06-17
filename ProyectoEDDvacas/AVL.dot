@@ -1,8 +1,7 @@
-digraph G{ 
+digraph D { 
  node [shape = egg, color = purple];
-NodoqnLqjY3HDiWLJBQ [ label = "qnLqjY3HDiWLJBQ"  ]; 
-NodotPiv8YNYpUsEqSb [ label = "tPiv8YNYpUsEqSb"  ]; 
-NodownS0BYiGDBPLSJe [ label = "wnS0BYiGDBPLSJe"  ]; 
-NodoqnLqjY3HDiWLJBQ-> NodotPiv8YNYpUsEqSb; 
-NodotPiv8YNYpUsEqSb-> NodownS0BYiGDBPLSJe; 
-}
+labelloc = "t;"label = "REPORTE AVL DE CATEGORIAS";
+
+	N0[label = " ID: 4iOpKx8xDSggSpV Nombre: h"];
+	N1[label = " ID: CiEAlxVvR9RXIwP Nombre: k"];
+	N0 -> N1;}

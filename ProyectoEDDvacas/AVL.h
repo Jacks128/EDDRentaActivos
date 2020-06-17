@@ -12,10 +12,12 @@ private:
     
 
 public:
+
     NodoAVL* left;
     NodoAVL* right;
     Activos* active;
     int altura=0;
+   
     void add(Activos* act);
     string caca();
     string grafiquita();
@@ -41,24 +43,34 @@ class AVL
 private:
     
     NodoAVL* insertarN(Activos *activos, NodoAVL* root);
+    NodoAVL* deleteNode(NodoAVL* node, string ID);
+    NodoAVL* searchNode(NodoAVL* node, string ID);
     int altura(NodoAVL* nodo);
     int mayor(int n1, int n2);
+    int indice;
     NodoAVL* leftleft(NodoAVL* n1);
     NodoAVL* rightright(NodoAVL* n2);
     NodoAVL* leftright(NodoAVL* n1);
     NodoAVL* rightleft(NodoAVL* n2);
     void inOrder(NodoAVL* a);
+    string ejecucion(NodoAVL* eje);
+    
 public:
+   
     NodoAVL* root;
     NodoAVL* get() {
         return this->root;
     }
     AVL();
+    void modificar(string id);
     void insertar(Activos* activos);
+    void deleter(string id);
     void inOrder();
     void graficaravl();
     void caca(NodoAVL* node);
     void addNode(NodoAVL* node);
+   ;
+   
 
 
 };

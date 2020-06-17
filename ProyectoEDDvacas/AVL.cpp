@@ -1,9 +1,11 @@
 #include "AVL.h"
 #include <fstream>
+#include <string>
 
 string juntadoralv1;
 AVL::AVL() {
 	this->root == nullptr;
+	this->indice = 0;
 }
 void NodoAVL::add(Activos* acti) {
 	NodoAVL* nActivos = new NodoAVL(acti);
@@ -76,6 +78,17 @@ void AVL::inOrder() {
 	cout << "nodo->" + flu->getActive()->getID() + " ";
 }*/
 
+void AVL::deleter(string id) {
+	//NodoAVL* flu = new NodoAVL(act);
+	root = deleteNode(root, id);
+
+}
+
+void AVL::modificar(string id) {
+	//NodoAVL* flu = new NodoAVL(act);
+	root = searchNode(root, id);
+
+}
 
 void AVL::insertar(Activos* activos) {
 	NodoAVL* flu = new NodoAVL(activos);
@@ -147,8 +160,7 @@ NodoAVL* AVL::insertarN(Activos* activos, NodoAVL* flu)
 	else
 	{
 		cout << "Nodo insertado";
-		root->altura = mayor(altura(root->left), altura(root->right)) + 1;
-		return flu;
+	
 	}
 	return nAlv;
 	inOrder(nAlv);
@@ -272,24 +284,138 @@ NodoAVL* AVL::rightleft(NodoAVL* n1)
 	return rightright(n1);
 }
 
+NodoAVL* AVL::searchNode(NodoAVL* node, string ID) {
+	if (node == nullptr) {
+		cout << "No existe ese activo, o el arbol esta vacio \n";
+		return 0;
+	}
+	else if (node->getActive()->getID()==ID)
+	{
+		string des;
+		//node->getActive();
+		cout << "El activo a modificar es ID ->" + node->getActive()->getID() + " Nombre: "+ node->getActive()->getNombreActivo() +  " Descripcion : "+ node->getActive()->getDescripcion() +" \n";
+		cout << "Ingrese la nueva descripcion: \n";
+		cin >> des;
+		node->getActive()->setDescripcion(des);
+		cout << "El activo modificado es: ID ->" + node->getActive()->getID() + " Nombre: " + node->getActive()->getNombreActivo() + " Descripcion : " + node->getActive()->getDescripcion() + " \n";
+		return node;
+		//return node;
+	}
+	else if (ID.compare(node->getActive()->getID())==-1) {
+		return searchNode(node->left, ID);
+	}
+	else
+	{
+		return searchNode(node->right, ID);
+	}
+}
+NodoAVL* AVL::deleteNode(NodoAVL* node, string ID) {
+	if (!node) {
+		return nullptr;
+	}
+	if (ID == node->getActive()->getID())
+	{
+		if (node->right == nullptr)
+		{
+			NodoAVL* temp = node;
+			node = node->left;
+			delete (temp);
+			return node;
+		}
+		else {
+			NodoAVL* temp = node->right;
+			while (temp->left)
+			{
+				temp=temp->left;
+			}
+			node->getActive()->getID() = temp->getActive()->getID();
+			node->right = deleteNode(node->right, temp->getActive()->getID());
+			
+		}
+	}
+	else if (ID < node->getActive()->getID())
+	{
+		node->left = deleteNode(node->left,ID);
+	}
+	else
+	{
+		node->right = deleteNode(node->right, ID);
+	} 
+	
+	//node->altura = mayor();
+	node->altura = mayor(altura(node->left), altura(node->right)) + 1;
+	if (altura(node->right) - altura(node->left) == 2)
+	{
+		if (altura(node->right->right) >= altura(node->right->left))
+		{
+			node = leftleft(node);
+		}
+		else {
+			node = rightleft(node);
+		}
+	}
+	else if (altura(node->left) - altura(node->right)==2) {
+		if (altura(node->left->left) >= altura(node->left->right))
+		{
+			node = rightright(node);
+		}
+		else {
+			node = leftright(node);
+		}
+	}
+	else {
+		cout << "Algo paso we";
+	}
+
+
+	return node;
+}
+
+
 
 
 void AVL::graficaravl() {
 
 	ofstream archivo("AVL.dot");
 
-	archivo << "digraph G{ \n node [shape = egg, color = purple];\n";
-	addNode(this->root);
-	archivo << juntadoralv1;
-	juntadoralv1 = "";
-	AVL::caca(root);
-	archivo << juntadoralv1;
-	juntadoralv1 = "";
+	archivo << "digraph D { \n node [shape = egg, color = purple];\n";
+	archivo << "labelloc = \"t;\"label = \"REPORTE AVL DE CATEGORIAS\";\n";
+	if (root != nullptr)
+	{
+		AVL::indice = 0;
+		archivo << ejecucion(root);
+	}
 	archivo << "}";
 	archivo.close();
 
 	system("C:\\\"Program Files (x86)\"\\Graphviz2.38\\bin\\dot.exe  -Tpng AVL.dot -o AVL.png");
 	system("AVL.png &");
+}
+
+string AVL::ejecucion(NodoAVL* eje) {
+	string text = "";
+	int indexRaiz;
+	indexRaiz=AVL::indice;
+	text+="\n\tN"+ to_string(indice) + std::string("[label = \"") + " ID: "+ eje->getActive()->getID() + " Nombre: " + eje->getActive()->getNombreActivo() + "\"];";
+	if (eje->left != nullptr)
+	{
+		AVL::indice++;
+		int indexNodoIzq = AVL::indice;
+		text += ejecucion(eje->left);
+		text += "\n\tN" + to_string(indexRaiz) + std::string(" -> N");
+		text += to_string(indexNodoIzq) + ";";
+
+	}
+	if (eje->right != nullptr)
+	{
+		AVL::indice++;
+		int indexNodoDer = AVL::indice;
+		text += ejecucion(eje->right);
+		text += "\n\tN" + to_string(indexRaiz) + std::string(" -> N");
+		text += to_string(indexNodoDer) + ";";
+
+	}
+	return text;
 }
 
 void AVL::addNode(NodoAVL* nodo) {

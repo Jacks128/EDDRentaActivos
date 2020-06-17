@@ -297,6 +297,9 @@ Nodo* MatrizDispersa::searchUsuario(string rentador, string company, string depa
     return usuario;
 }
 
+
+
+
 Nodo* MatrizDispersa::toGraphic(string department, string compan) 
 {
     Nodo* ren = nullptr;

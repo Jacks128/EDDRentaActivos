@@ -15,6 +15,7 @@ void AgregarActivo();
 void CrearUsuario();
 void Inicio();
 void EliminarActivo();
+void ModificarActivo();
 string Aleatorio();
 void IsLogged();
 /*Variables*/
@@ -91,9 +92,7 @@ void Inicio()
     }
 
 }
-void isLogged() {
-  
-}
+
 void LoginAdmin()
 {
     cout << " \n ------------------------------------------------------------------------ \n";
@@ -193,8 +192,8 @@ void MenuUsuario()
 
         case 3:
             system("cls");
-            cout << "Cerrando Sesion" << endl;
-            Inicio();
+            cout << "ModificarActivo" << endl;
+            ModificarActivo();
             break;
 
         case 4:
@@ -351,13 +350,23 @@ string Aleatorio() {
    //cin.get();
     return  ale;
 }
+
 void EliminarActivo() {
-    int x;
+    string x;
     cout << "\t\t\t- Bienvenido a la seccion Eliminar -\n\n";
-    arbolavl->inOrder();
+    tu->getUsuario()->getAvlAct()->inOrder();
     cout << "\t\t\t- Elija el ID a eliminar -\n\n";
     cin >> x;
-
-
+    tu->getUsuario()->getAvlAct()->deleter(x);
 }
 
+void ModificarActivo() {
+    string x;
+    cout << "\t\t\t- Bienvenido a la seccion Modificar -\n\n";
+    tu->getUsuario()->getAvlAct()->inOrder();
+    cout << "\t\t\t- Elija el ID a mosficar -\n\n";
+    cin >> x;
+    tu->getUsuario()->getAvlAct()->modificar(x);
+    
+
+}
