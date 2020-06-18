@@ -21,6 +21,7 @@ void EliminarActivo();
 void MenuReportes();
 void ModificarActivo();
 void RentarActivo();
+void Catalogo();
 string Aleatorio();
 void IsLogged();
 /*Variables*/
@@ -212,7 +213,6 @@ void MenuUsuario()
         case 4:
             system("cls");
             RentarActivo();
-            exit(0);
             break;
         case 5:
             system("cls");
@@ -328,11 +328,11 @@ void MenuReportes() {
             break;
 
         case 4:
-            tu->getUsuario()->getAvlAct()->graficaravl();
+            tu->getUsuario()->getLCD()->Graficar();
             break;
 
         case 5:
-            matriz->graficar();
+            tu->getUsuario()->getAvlAct()->graficaravl();
             break;
 
         case 6:
@@ -467,9 +467,11 @@ void ModificarActivo() {
 }
 
 void RentarActivo() {
+    string usuarioActual;
     cout << " \n ------------------------------------------------------------------------------- \n";
     cout << "\t\t\t       -Catalogo de Activo-\n\n";
-    tu->getUsuario()->getAvlAct()->preOrder();
+    usuarioActual = tu->getUsuario()->getUsuario();
+    matriz->Catalogo(usuarioActual);
     cout << "Ingrese el ID del Activo a rentar:  ";
     cin >> ID;
     cout << "Ingresar Departamento:              ";
@@ -480,5 +482,6 @@ void RentarActivo() {
     cin >> tiempoR;
     
     tu->getUsuario()->getLCD()->Insertar(new Transaccion(Aleatorio(), ID, tu->getUsuario()->getNombre(), depa, em, em, tiempoR));
-    tu->getUsuario()->getLCD()->Mostrar();
+  tu->getUsuario()->getLCD()->Mostrar();
 }
+

@@ -74,7 +74,7 @@ void AVL::preOrder() {
 }
 
 void AVL::inOrder() {
-	cout << "Recorrido inorden del arbol binario de búsqueda: \n\n";
+	cout << "Recorrido inorden de Activos: \n\n";
 	inOrder(root);
 }
 
@@ -386,7 +386,7 @@ void AVL::graficaravl() {
 	ofstream archivo("AVL.dot");
 
 	archivo << "digraph D { \n node [shape = egg, color = purple];\n";
-	archivo << "labelloc = \"t;\"label = \"REPORTE AVL DE CATEGORIAS\";\n";
+	archivo << "labelloc = \"t;\"label = \"REPORTE AVL DE CATEGORIAS ++\";\n";
 	if (root != nullptr)
 	{
 		AVL::indice = 0;

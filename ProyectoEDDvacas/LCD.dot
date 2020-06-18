@@ -1,0 +1,11 @@
+digraph G{
+rankdir = LR;
+node [shape = egg, color = purple];
+labelloc = "t;"label = "REPORTE TRANSACCIONES";
+x00C5BFC8[dir=both label = "ID Transaccion = CGFPGXydpKE69W0\nID ActivoRentado = CGFPGXydpKE69W0\nDepartamento = chimal\nEmpresa = jugueton"]
+x00C5BFC8-> x00C5BBA0
+x00C5BBA0[dir=both label = "ID Transaccion = jkRH5RBQRMtQTHX\nID ActivoRentado = jkRH5RBQRMtQTHX\nDepartamento = claro\nEmpresa = huehue"]
+x00C5BBA0-> x00C59010
+x00C59010[dir=both label = "ID Transaccion = 0NOl7ScbB7MTgau\nID ActivoRentado = 0NOl7ScbB7MTgau\nDepartamento = huehue\nEmpresa = claro"]
+x00C59010-> x00C5BFC8
+}

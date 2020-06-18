@@ -507,5 +507,42 @@ void MatrizDispersa::magia()
 }
 
 
+void MatrizDispersa::Catalogo(string usuario) {
+    Nodo* tempx = 0;
+    Nodo* tempy = header->down;
 
+    while (tempy)
+    {
+        tempx = tempy->right;
+        while (tempx)
+        {
+            
+            if (tempx->miUsu->getUsuario() != usuario) {
+                cout << "ACTIVOS DE " + tempx->getUsuario()->getNombre()+"\n";
+                tempx->getUsuario()->getAvlAct()->inOrder();
+            }
+            tempx = tempx->right;
+        }
+        cout << "\n";
+        tempy = tempy->down;
+    }
+
+}
+
+/*Nodo* tempx=0;
+Nodo* tempy=header->down;
+while (tempy)
+{
+    tempx = tempy->right;
+    while (tempx)
+    {
+
+        cout << tempx->getUsuario()->getNombre();
+        tempx = tempx->right;
+
+    }
+    cout << "\n";
+    tempy = tempy->down;
+}
+}*/
 

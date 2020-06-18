@@ -29,15 +29,17 @@ class LCD /*CLASE LISTA*/
 {
 public:
 		NodoLCD* cabeza;
+		NodoLCD* ultimo;
 		int tam;
 		//NodoLCD* ultimo;
 		LCD() {
 			this->cabeza = nullptr;
-			this->tam = 0;
+			this->ultimo = nullptr;
 		}
 	void Insertar(Transaccion* transaccion);
 	bool buscar(Transaccion* transaccion);
 	void Mostrar();
+	void Graficar();
 	
 
 

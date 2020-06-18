@@ -1,10 +1,7 @@
-﻿  LCD.cpp
+﻿  AVL.cpp
+C:\Users\Jacky\source\repos\ProyectoEDDvacas\ProyectoEDDvacas\AVL.cpp(7,13): warning C4553: '==': result of expression not used; did you intend '='?
   MatrizDispersa.cpp
 C:\Users\Jacky\source\repos\ProyectoEDDvacas\ProyectoEDDvacas\MatrizDispersa.cpp(335,11): warning C4101: 'depa': unreferenced local variable
 C:\Users\Jacky\source\repos\ProyectoEDDvacas\ProyectoEDDvacas\MatrizDispersa.cpp(334,11): warning C4101: 'empre': unreferenced local variable
-  ProyectoEDDvacas.cpp
-C:\Users\Jacky\source\repos\ProyectoEDDvacas\ProyectoEDDvacas\ProyectoEDDvacas.cpp(421,15): warning C4244: 'argument': conversion from 'time_t' to 'unsigned int', possible loss of data
-C:\Users\Jacky\source\repos\ProyectoEDDvacas\ProyectoEDDvacas\ProyectoEDDvacas.cpp(419,9): warning C4101: 'x': unreferenced local variable
-  Usuarios.cpp
   Generating Code...
   ProyectoEDDvacas.vcxproj -> C:\Users\Jacky\source\repos\ProyectoEDDvacas\Debug\ProyectoEDDvacas.exe

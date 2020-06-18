@@ -60,6 +60,7 @@ public:
     Nodo* header;
     Nodo* nRentador;
     AVL* arbolavl;
+    
     MatrizDispersa()
     {
         Usuarios* admin = new Usuarios("Admin", "admin", "jacky");
@@ -77,6 +78,7 @@ public:
 
     //Nodo* getnRentador();
     void graficar();
+    void Catalogo(string usuario);
     void asignActives(Activos* activo, Nodo* rentador);
     Nodo* createCompany(string empresa);
     Nodo* createDepartment(string depa);
