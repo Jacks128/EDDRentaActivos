@@ -66,7 +66,7 @@ void AVL::inOrder(NodoAVL* a)
 
 
 void AVL::inOrder() {
-	cout << "Recorrido inorden del árbol binario de búsqueda: \n";
+	cout << "Recorrido inorden del arbol binario de búsqueda: \n\n";
 	inOrder(root);
 
 }
@@ -297,7 +297,7 @@ NodoAVL* AVL::searchNode(NodoAVL* node, string ID) {
 		cout << "Ingrese la nueva descripcion: \n";
 		cin >> des;
 		node->getActive()->setDescripcion(des);
-		cout << "El activo modificado es: ID ->" + node->getActive()->getID() + " Nombre: " + node->getActive()->getNombreActivo() + " Descripcion : " + node->getActive()->getDescripcion() + " \n";
+		cout << " \nEl activo modificado es: ID ->" + node->getActive()->getID() + " Nombre: " + node->getActive()->getNombreActivo() + " Descripcion : " + node->getActive()->getDescripcion() + " \n";
 		return node;
 		//return node;
 	}
@@ -364,7 +364,7 @@ NodoAVL* AVL::deleteNode(NodoAVL* node, string ID) {
 		}
 	}
 	else {
-		cout << "Algo paso we";
+		cout << "Activo Eliminado \n";
 	}
 
 

@@ -15,6 +15,7 @@ void AgregarActivo();
 void CrearUsuario();
 void Inicio();
 void EliminarActivo();
+void MenuReportes();
 void ModificarActivo();
 string Aleatorio();
 void IsLogged();
@@ -60,9 +61,9 @@ void Inicio()
     {
        // cin.clear();
         cout << "\t\t\t\t- Inicie Sesion -\n\n";
-        cout << "1  Administrador \n"; //subir archivo json
-        cout << "2  Usuario \n";
-        cout << "3  Salir\n";
+        cout << "\t###################### 1  Administrador ########################\n"; //subir archivo json
+        cout << "\t###################### 2    Usuario     ########################\n";
+        cout << "\t###################### 3     Salir      ########################\n";
         cin >> m;
         switch (m)
         {
@@ -95,12 +96,11 @@ void Inicio()
 
 void LoginAdmin()
 {
-    cout << " \n ------------------------------------------------------------------------ \n";
-    cout << "\t\t\t Bienvenido Administrador \n" << endl;
-    cout << "Por favor, inicie sesion \n\n" << endl;
+        cout << "\t\t\t    Bienvenido Administrador \n" << endl;
+    cout << "\t ------------------  Por favor, inicie sesion  ------------------ \n\n" << endl;
     cout << "Nombre de Usuario: ";
     cin >> user;
-    cout << "Contrasenia: ";
+    cout << "Contrasenia:       ";
     cin >> password;
 
     Usuarios* usur = matriz->getHeader()->getUsuario();
@@ -109,6 +109,7 @@ void LoginAdmin()
     {
         if (password == usur->getContra())
         {
+            system("cls");
             MenuAdmin();
         }
         else
@@ -125,16 +126,16 @@ void LoginAdmin()
 }
 
 void LoginUsuario() {
-    cout << " \n ------------------------------------------------------------------------ \n";
-    cout << "\t\t\t Bienvenido\n" << endl;
-    cout << "Por favor, inicie sesion \n\n" << endl;
-    cout << "Nombre de Usuario: ";
+    cout << " \n ------------------------------------------------------------------------------- \n";
+    cout << "\t\t\t\t    Bienvenido\n" << endl;
+    cout << "\t ------------------  Por favor, inicie sesion  ------------------ \n\n" << endl;
+    cout << "Nombre de Usuario:          ";
     cin >> user;
-    cout << "Contrasenia: ";
+    cout << "Contrasenia:                ";
     cin >> password;
-    cout << "Empresa: ";
+    cout << "Empresa:                    ";
     cin >> empresa;
-    cout << "Departamento de Ubicacion: ";
+    cout << "Departamento de Ubicacion:  ";
     cin >> departamento;
 
     tu = matriz->searchUsuario(user, empresa, departamento);
@@ -144,12 +145,13 @@ void LoginUsuario() {
     {
         if (password == tu->getUsuario()->getContra())
         {
+            system("cls");
             MenuUsuario();
         }
         else
         {
             cout << "Contraase;a incorrecta";
-            exit(0);
+            LoginUsuario();
         }
     }
     else
@@ -161,21 +163,24 @@ void LoginUsuario() {
 
 void MenuUsuario()
 {
-    cout << "\n\t\t\t    Bienvenido "+ tu->getUsuario()->getNombre() +"\n" << endl;
+    cout << " \n ------------------------------------------------------------------------------- \n";
+    
+    cout << "\t\t\t      Bienvenido "+ tu->getUsuario()->getNombre() +"\n" << endl;
     bool indicador = false;
     int m;
     while (indicador = true)
     {
         cin.clear();
-        cout << "\t\t\t- Elija una opcion -\n\n";
-        cout << "1  Agregar Activo \n"; //subir archivo json
-        cout << "2  Eliminar Activo\n";
-        cout << "3  Modificar Activo\n";
-        cout << "4  Rentar Activo\n";
-        cout << "5  Activos Rentados \n";
-        cout << "6  Mis Activos Rentados\n";
-        cout << "7  Cerrar Sesion \n";
-        cout << "8  Salir\n";
+        cout << "\n\t\t\t   - Elija una opcion -\n\n";
+        cout << "\t    ############ 1.     Agregar Activo     ############\n"; //subir archivo json
+        cout << "\t    ############ 2.    Eliminar Activo     ############\n";
+        cout << "\t    ############ 3.    Modificar Activo    ############\n";
+        cout << "\t    ############ 4.     Rentar Activos     ############\n";
+        cout << "\t    ############ 5.    Activos Rentados    ############\n";
+        cout << "\t    ############ 6.  Mis Activos Rentados  ############\n";
+        cout << "\t    ############ 7.      Cerrar Sesion     ############\n";
+        cout << "\t    ############ 8.          Salir         ############\n";
+        cin >> m;
         cin >> m;
         switch (m)
         {
@@ -186,13 +191,12 @@ void MenuUsuario()
 
         case 2:
             system("cls");
-            cout << "Eliminar Activos";
+            
             EliminarActivo();
             break;
 
         case 3:
             system("cls");
-            cout << "ModificarActivo" << endl;
             ModificarActivo();
             break;
 
@@ -231,17 +235,18 @@ void MenuUsuario()
 }
 void MenuAdmin()
 {
-    cout << "\n\t\t\t    Bienvenido Admin\n" << endl;
+    cout << " \n ------------------------------------------------------------------------------- \n";
+    cout << "\t\t\t       Bienvenido Admin\n" << endl;
     bool indicador = false;
     int m;
     while (indicador = true)
     {
         cin.clear();
-        cout << "\t\t\t- Elija una opcion -\n\n";
-        cout << "1  Crear Usuarios \n"; //subir archivo json
-        cout << "2  Reportes\n";
-        cout << "3  Cerrar Sesion \n";
-        cout << "4  Salir\n";
+        cout << "\t\t\t     - Elija una opcion -\n\n";
+        cout << "\t     ############## 1.  Crear Usuarios ##############\n"; //subir archivo json
+        cout << "\t     ############## 2.     Reportes    ##############\n";
+        cout << "\t     ############## 3.  Cerrar Sesion  ##############\n";
+        cout << "\t     ############## 4.      Salir      ##############\n";
         cin >> m;
         switch (m)
         {
@@ -252,8 +257,7 @@ void MenuAdmin()
 
         case 2:
             system("cls");
-            cout << "Reportes";
-            matriz->graficar();
+            MenuReportes();
             break;
 
         case 3:
@@ -276,16 +280,89 @@ void MenuAdmin()
     }
 }
 
+void MenuReportes() {
+    cout << " \n ------------------------------------------------------------------------------- \n";
+    cout << "\t\t\t        - Menu Reportes - \n" << endl;
+    bool indicador = false;
+    int m;
+    while (indicador = true)
+    {
+        cin.clear();
+        cout << "\t\t\t     - Elija una opcion -\n\n";
+        cout << " ############ 1.              Reporte Matriz Dispersa            #############\n"; 
+        cout << " ############ 2.  Reporte Activos Disponibles de un Departamento #############\n";
+        cout << " ############ 3.    Reporte Activos Disponibles de una Empresa   #############\n";
+        cout << " ############ 4.              Reporte Transacciones              #############\n";
+        cout << " ############ 5.          Reporte Activos de un Usuario          #############\n";
+        cout << " ############ 6.         Activos rentados por un Usuario         #############\n";
+        cout << " ############ 7.             Ordenar Transacciones               #############\n";
+        cout << " ############ 8.                    Regresar                     #############\n";
+        cin >> m;
+        switch (m)
+        {
+        case 1:
+            matriz->graficar();
+            break;
+
+        case 2:
+            //system("cls");
+            //cout << "Reportes";
+            
+            break;
+
+        case 3:
+            system("cls");
+            cout << "Cerrando Sesion" << endl;
+            Inicio();
+            break;
+
+        case 4:
+            tu->getUsuario()->getAvlAct()->graficaravl();
+            break;
+
+        case 5:
+            matriz->graficar();
+            break;
+
+        case 6:
+            //system("cls");
+            //cout << "Reportes";
+
+            break;
+
+        case 7:
+            system("cls");
+            cout << "Cerrando Sesion" << endl;
+            Inicio();
+            break;
+
+        case 8:
+            system("cls");
+            MenuAdmin();
+            break;
+        default:
+            system("cls");
+            cout << "Opcion no valida.\a\n";
+            //  pausa();
+            break;
+        }
+    }
+}
+
 void AgregarActivo() {
-    cout << "\t\t-Creacion de Activo-\n\n";
-    cout << "Ingrese el Nombre del Activo: " << endl;
+    cout << " \n ------------------------------------------------------------------------------- \n";
+    cout << "\t\t\t       -Creacion de Activo-\n\n";
+    cout << "Ingrese el Nombre del Activo:  ";
     cin >> nombreActivo;
-    cout << "Ingrese su Descripcion: " << endl;
+    cout << "Ingrese su Descripcion:        ";
     cin >> descripcion;
    
     tu->getUsuario()->getAvlAct()->insertar(new Activos(Aleatorio(), nombreActivo, descripcion));
-   // arbolavl->insertar( );
+   // arbolavl->insertar( );  
+
+    cout << "\t\t\t       - Tus Activos -\n\n";
     tu->getUsuario()->getAvlAct()->inOrder();
+    cout << "\n\n";
 
     /*Pruebas*/
  //   arbolavl->insertar(new Activos("A2","SHIne","No pos pa esto y lo otor"));
@@ -298,21 +375,22 @@ void AgregarActivo() {
 
 void CrearUsuario()
 {
-    cout<<"\t\t-Creacion de Usuarios-\n\n";
-            cout<<"Ingrese su nombre de Usuario: "<<endl;
+    cout << " \n ------------------------------------------------------------------------------- \n";
+    cout << "\t\t\t     - Creacion de Usuarios - \n" << endl;
+            cout<<"Ingrese su nombre de Usuario:  ";
             cin>>user;
-            cout<<"Ingrese su Password: "<<endl;
+            cout<<"Ingrese su Password:           ";
             cin>>password;
-            cout<<"Ingrese su Nombre: "<<endl;
+            cout<<"Ingrese su Nombre:             ";
             cin>>nombre;
             usu=new Usuarios(user,password,nombre);
-            cout<<"EL Usuario: "+usu->nombre+" ha sido creado exitosamente, su password es: " + usu->contra+ " y su username es: " + usu->usuario+"\n\n"<<endl;
-            cout<<"Empresa a la que pertenece el usuario: "<<endl;
+            cout<<"\n\nEL Usuario: "+usu->nombre+" ha sido creado exitosamente \nSu password es: " + usu->contra+ " y su Username es: " + usu->usuario+"\n\n"<<endl;
+            cout<<"Ingresa la empresa a la que pertenece el usuario:    ";
             cin>>empresa;
-            cout<<"Departamento al que pertenece el usuario: "<<endl;
+            cout<<"Ingresa el departamento al que pertenece el usuario: ";
             cin>>departamento;
             matriz->Insertar(usu,empresa,departamento);
-            cout<<"EL Usuario: "+usu->nombre+" se encuentra en " + empresa+ " y su username es: " + departamento+"\n\n"<<endl;
+            cout<<"\n\nEL Usuario: "+usu->nombre+" se encuentra en " + empresa+ " y su username es: " + departamento+"\n\n"<<endl;
 
             /**P R U E B A S**/
            
@@ -322,10 +400,7 @@ void CrearUsuario()
             matriz->Insertar(new Usuarios("maria","123","maria"),"jugueton","chimal");
             matriz->Insertar(new Usuarios("juan","123","juan"),"claro","peten");
 
-            if(matriz->searchCompany("claro",matriz->header))
-            {
-                cout<<"true";
-            }
+          
 
 }
 
@@ -346,27 +421,35 @@ string Aleatorio() {
         }
         ale=ale+ strrnd[i];
     }
-    cout << ale;
+   // cout << ale;
    //cin.get();
     return  ale;
 }
 
 void EliminarActivo() {
+    cout << " \n ------------------------------------------------------------------------------- \n";
+
     string x;
     cout << "\t\t\t- Bienvenido a la seccion Eliminar -\n\n";
     tu->getUsuario()->getAvlAct()->inOrder();
-    cout << "\t\t\t- Elija el ID a eliminar -\n\n";
+    cout << "\n\t\t\t      - Elija el ID a eliminar -\n\n";
     cin >> x;
     tu->getUsuario()->getAvlAct()->deleter(x);
+    tu->getUsuario()->getAvlAct()->inOrder();
 }
 
 void ModificarActivo() {
     string x;
+    cout << " \n ------------------------------------------------------------------------------- \n";
+
     cout << "\t\t\t- Bienvenido a la seccion Modificar -\n\n";
+
     tu->getUsuario()->getAvlAct()->inOrder();
     cout << "\t\t\t- Elija el ID a mosficar -\n\n";
     cin >> x;
     tu->getUsuario()->getAvlAct()->modificar(x);
+    tu->getUsuario()->getAvlAct()->inOrder();
+
     
 
 }
