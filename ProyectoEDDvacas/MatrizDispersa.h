@@ -89,7 +89,7 @@ public:
     string getNodo();
     string getConexion();
     
-   
+    void imprimir();
     void magia();
 
 };

@@ -400,25 +400,77 @@ void MatrizDispersa::magia()
     }
     /*usuarios*/
    
-    Nodo* depHelper = header;
-    Nodo* empHelper = header;
-    Nodo* aux = nullptr;
-    string array[100];
-    while (depHelper->right != NULL)
-    {
-        depHelper = depHelper->right;
-        while (empHelper->down != NULL)
-        {
-            empHelper = empHelper->down;
-            aux = toGraphic(depHelper->nombreN, empHelper->nombreN);
 
-            if (aux != nullptr)
-            {
-                juntadoralv += aux->getUsuario()->getNombre() + "[label=\"" + aux->getUsuario()->getNombre() + "\"]\n";
-               
-            }
+    /*Nodo* tempx=0;
+    Nodo* tempy=header->down;
+    while (tempy)
+    {
+        tempx = tempy->right;
+        while (tempx)
+        {
+            
+            cout << tempx->getUsuario()->getNombre();
+            tempx = tempx->right;
+            
         }
-        empHelper = header;
+        cout << "\n";
+        tempy = tempy->down;
+    }
+}*/
+    Nodo* depHelper = 0;//x
+    Nodo* empHelper = header->down;//y
+    Nodo* current;
+    string auxright;
+    string auxdown;
+    //Nodo* aux = nullptr;
+    //string array[100];
+    while (empHelper)
+    {
+        depHelper = empHelper->right;
+        while (depHelper)
+        {
+             juntadoralv+= depHelper->getUsuario()->getNombre() + "[label=\"" + depHelper->getUsuario()->getNombre() + "\"]\n";
+             auxright = depHelper->getUsuario()->getNombre();
+            //depHelper = depHelper->right;
+            if (depHelper->right != nullptr)
+            {
+                juntadoralv += auxright + "->" + depHelper->right->getUsuario()->getNombre()+"[constraint=false, dir=both];";
+                juntadoralv += "{rank=same; "+depHelper->left->nombreN + "; " +  auxright + "; " + depHelper->right->getUsuario()->getNombre() + ";}\n";
+                current = depHelper;
+                if (current->down != nullptr)
+                {
+                    juntadoralv += auxright + "->" + depHelper->down->getUsuario()->getNombre() + "[dir=both];";
+                }
+                if (depHelper->up->getUsuario() == NULL)
+                {
+                    juntadoralv += auxright + "->" + depHelper->up->nombreN + "[dir=both];";
+                }
+
+                depHelper = depHelper->right;
+                if (depHelper->up->getUsuario() == NULL)
+                {
+                    juntadoralv += depHelper->getUsuario()->getNombre() + "->" + depHelper->up->nombreN + "[dir=both];";
+                }
+
+            }
+            else {
+                juntadoralv += "{rank=same; " + depHelper->left->nombreN + "; " + auxright  + ";}\n";
+                if (depHelper->down != nullptr)
+                {
+                    juntadoralv += auxright + "->" + depHelper->down->getUsuario()->getNombre() + "[dir=both];";
+                }
+                if (depHelper->up->getUsuario() == NULL)
+                {
+                    juntadoralv += auxright + "->" + depHelper->up->nombreN + "[dir=both];";
+                }
+                //depHelper = depHelper->right;
+            }
+            break;
+        }
+        
+        empHelper = empHelper->down;
+
+       
     }
 
 
@@ -436,6 +488,22 @@ void MatrizDispersa::magia()
 
     //juntadoralv = "";
     
+}void MatrizDispersa::imprimir() {
+    Nodo* tempx=0;
+    Nodo* tempy=header->down;
+    while (tempy)
+    {
+        tempx = tempy->right;
+        while (tempx)
+        {
+            
+            cout << tempx->getUsuario()->getNombre();
+            tempx = tempx->right;
+            
+        }
+        cout << "\n";
+        tempy = tempy->down;
+    }
 }
 
 

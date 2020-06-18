@@ -16,7 +16,7 @@ public:
     NodoAVL* left;
     NodoAVL* right;
     Activos* active;
-    int altura=0;
+    int altura=1;
    
     void add(Activos* act);
     string caca();
@@ -53,6 +53,7 @@ private:
     NodoAVL* leftright(NodoAVL* n1);
     NodoAVL* rightleft(NodoAVL* n2);
     void inOrder(NodoAVL* a);
+    void preOrder(NodoAVL* a);
     string ejecucion(NodoAVL* eje);
     
 public:
@@ -66,6 +67,7 @@ public:
     void insertar(Activos* activos);
     void deleter(string id);
     void inOrder();
+    void preOrder();
     void graficaravl();
     void caca(NodoAVL* node);
     void addNode(NodoAVL* node);

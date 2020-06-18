@@ -39,17 +39,22 @@ void NodoAVL::add(Activos* acti) {
 
 void AVL::inOrder(NodoAVL* a) 
 {
-//	int x = 1;
 	if (a != nullptr) {
 		
 		inOrder(a->left);
 		cout << "ID ->" + a->getActive()->getID() + " Nombre: "+ a->getActive()->getNombreActivo() +  " Descripcion: "+ a->getActive()->getDescripcion() +" \n";
 		inOrder(a->right);
-		//x++;
 	}
-	//	return;
-	
-	
+}
+
+void AVL::preOrder(NodoAVL* a)
+{
+	if (a != nullptr) {
+
+		cout << "ID ->" + a->getActive()->getID() + " Nombre: " + a->getActive()->getNombreActivo() + " Descripcion: " + a->getActive()->getDescripcion() + " \n";
+		preOrder(a->left);
+		preOrder(a->right);
+	}
 }
 
 /*void AVL::inOrder(NodoAVL* a)
@@ -63,12 +68,14 @@ void AVL::inOrder(NodoAVL* a)
 		inOrder(a->right);
 	
 }*/
-
+void AVL::preOrder() {
+	cout << "Recorrido PREORDER del arbol binario de búsqueda: \n\n";
+	preOrder(root);
+}
 
 void AVL::inOrder() {
 	cout << "Recorrido inorden del arbol binario de búsqueda: \n\n";
 	inOrder(root);
-
 }
 
 /*void AVL::insertar(Activos* act) {
@@ -91,15 +98,15 @@ void AVL::modificar(string id) {
 }
 
 void AVL::insertar(Activos* activos) {
-	NodoAVL* flu = new NodoAVL(activos);
+	NodoAVL* aux = new NodoAVL(activos);
 	if(root==nullptr){
-		root=flu;
+		root=aux;
 	}
 	else {
 		root = insertarN(activos, root);
 		
 	}
-	cout << "nodo->" + flu->getActive()->getID() + " \n";
+	cout << "nodo->" + aux->getActive()->getID() + " \n";
 	}
 	
 
@@ -109,7 +116,7 @@ void AVL::insertar(Activos* activos) {
 NodoAVL* AVL::insertarN(Activos* activos, NodoAVL* flu) 
 {
 	NodoAVL* nAlv = flu;
-	if (flu->getActive()->getID().compare(activos->getID()) > 0) {
+	if (flu->getActive()->getID()>(activos->getID()) ) {
 		if (flu->left == nullptr)
 		{
 			flu->left = new NodoAVL(activos);
@@ -128,11 +135,10 @@ NodoAVL* AVL::insertarN(Activos* activos, NodoAVL* flu)
 					nAlv = leftright(flu);
 				}
 			}
-			
 
 		}
 	}
-	else if (flu->getActive()->getID().compare(activos->getID()) < 0)
+	else if (flu->getActive()->getID()<(activos->getID()))
 	{
 		if (flu->right == nullptr)
 		{
@@ -162,6 +168,7 @@ NodoAVL* AVL::insertarN(Activos* activos, NodoAVL* flu)
 		cout << "Nodo insertado";
 	
 	}
+	flu->altura = mayor(altura(flu->left), altura(flu->right)) + 1;
 	return nAlv;
 	inOrder(nAlv);
 }
@@ -226,7 +233,7 @@ int AVL::altura(NodoAVL* nodo)
 {
 	if (nodo==nullptr)
 	{
-		return -1;
+		return 0;
 	}
 	else
 	{
@@ -394,25 +401,39 @@ void AVL::graficaravl() {
 
 string AVL::ejecucion(NodoAVL* eje) {
 	string text = "";
+	
 	int indexRaiz;
-	indexRaiz=AVL::indice;
-	text+="\n\tN"+ to_string(indice) + std::string("[label = \"") + " ID: "+ eje->getActive()->getID() + " Nombre: " + eje->getActive()->getNombreActivo() + "\"];";
+	indexRaiz=indice;
+	//text+="\n\tN"+ to_string(indice) + std::string("[label = \"") + " ID: "+ eje->getActive()->getID() + "\\nNombre: " + eje->getActive()->getNombreActivo() + "\"];\n";
 	if (eje->left != nullptr)
 	{
-		AVL::indice++;
-		int indexNodoIzq = AVL::indice;
+		text += "\""+eje->getActive()->getID() + "\" [label =\"" + " ID: " + eje->getActive()->getID() + "\\nNombre: " + eje->getActive()->getNombreActivo() + " \" ] \n" ;
+		text += "\""+eje->getActive()->getID()+"\" -> "+ "\""+eje->left->getActive()->getID()+"\"\n";
 		text += ejecucion(eje->left);
-		text += "\n\tN" + to_string(indexRaiz) + std::string(" -> N");
-		text += to_string(indexNodoIzq) + ";";
+	}
+	else 
+	{
+		text += "\"" + eje->getActive()->getID() + "\" [label =\"" + " ID: "  + eje->getActive()->getID() + "\\nNombre: " + eje->getActive()->getNombreActivo() + " \" ]\n ";
+		//text += to_string(indice) ;
+		text += "\"" + eje->getActive()->getID() + "\" -> "+ to_string(indice) +" [label = 0] \n" ;
+		indice++;
+
 
 	}
+
 	if (eje->right != nullptr)
 	{
-		AVL::indice++;
-		int indexNodoDer = AVL::indice;
+		text += "\"" + eje->getActive()->getID() + "\" [label =\"" + " ID: "  + eje->getActive()->getID() + "\\nNombre: " + eje->getActive()->getNombreActivo() + " \" ] \n";
+		text += "\"" + eje->getActive()->getID() + "\" -> " + "\"" + eje->right->getActive()->getID() + "\" \n";
 		text += ejecucion(eje->right);
-		text += "\n\tN" + to_string(indexRaiz) + std::string(" -> N");
-		text += to_string(indexNodoDer) + ";";
+	}
+	else
+	{
+		text += "\"" + eje->getActive()->getID() + "\" [label =\"" + " ID: "  + eje->getActive()->getID() + "\\nNombre: " + eje->getActive()->getNombreActivo() + " \" ] \n";
+		//text += to_string(indice) ;
+		text += "\"" + eje->getActive()->getID() + "\" -> " + to_string(indice) + " [label = 0]\n";
+		indice++;
+
 
 	}
 	return text;

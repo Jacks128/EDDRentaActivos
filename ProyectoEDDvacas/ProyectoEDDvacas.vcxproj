@@ -152,6 +152,7 @@
     <ClCompile Include="MatrizDispersa.cpp" />
     <ClCompile Include="ProyectoEDDvacas.cpp" />
     <ClCompile Include="Transaccion.cpp" />
+    <ClCompile Include="Transacciones.cpp" />
     <ClCompile Include="Usuarios.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -159,6 +160,7 @@
     <ClInclude Include="AVL.h" />
     <ClInclude Include="MatrizDispersa.h" />
     <ClInclude Include="Transaccion.h" />
+    <ClInclude Include="Transacciones.h" />
     <ClInclude Include="Usuarios.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

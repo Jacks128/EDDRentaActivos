@@ -36,7 +36,7 @@ public:
     }
     std::string getNombre()
     {
-        return this->nombre;
+        return nombre;
     }
     AVL* getAvlAct()
     {

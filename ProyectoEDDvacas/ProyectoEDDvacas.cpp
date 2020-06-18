@@ -1,5 +1,7 @@
 
 #include <iostream>
+#include <stdio.h>
+#include <string>
 #include "MatrizDispersa.h"
 #include "Activos.h"
 #include "AVL.h"
@@ -181,7 +183,7 @@ void MenuUsuario()
         cout << "\t    ############ 7.      Cerrar Sesion     ############\n";
         cout << "\t    ############ 8.          Salir         ############\n";
         cin >> m;
-        cin >> m;
+       // cin >> m;
         switch (m)
         {
         case 1:
@@ -301,6 +303,7 @@ void MenuReportes() {
         switch (m)
         {
         case 1:
+            matriz->imprimir();
             matriz->graficar();
             break;
 
@@ -353,15 +356,18 @@ void AgregarActivo() {
     cout << " \n ------------------------------------------------------------------------------- \n";
     cout << "\t\t\t       -Creacion de Activo-\n\n";
     cout << "Ingrese el Nombre del Activo:  ";
-    cin >> nombreActivo;
+    getline(cin, nombreActivo);
+    getline(cin, nombreActivo);
+   // cin >> nombreActivo;
     cout << "Ingrese su Descripcion:        ";
-    cin >> descripcion;
+    getline(cin, descripcion);
+    //cin >> descripcion;
    
     tu->getUsuario()->getAvlAct()->insertar(new Activos(Aleatorio(), nombreActivo, descripcion));
    // arbolavl->insertar( );  
 
     cout << "\t\t\t       - Tus Activos -\n\n";
-    tu->getUsuario()->getAvlAct()->inOrder();
+    tu->getUsuario()->getAvlAct()->preOrder();
     cout << "\n\n";
 
     /*Pruebas*/
@@ -394,11 +400,7 @@ void CrearUsuario()
 
             /**P R U E B A S**/
            
-            matriz->Insertar(new Usuarios("pedro","123","pedro"),"claro","huehue");
-           matriz->Insertar(new Usuarios("jacky","123","jacky"),"tigo","huehue");
-            matriz->Insertar(new Usuarios("susel","147","susel"),"jugueton","chimal");
-            matriz->Insertar(new Usuarios("maria","123","maria"),"jugueton","chimal");
-            matriz->Insertar(new Usuarios("juan","123","juan"),"claro","peten");
+            
 
           
 
@@ -446,10 +448,13 @@ void ModificarActivo() {
 
     tu->getUsuario()->getAvlAct()->inOrder();
     cout << "\t\t\t- Elija el ID a mosficar -\n\n";
-    cin >> x;
+    
+    getline(cin, x);
+    //cin >> x;
     tu->getUsuario()->getAvlAct()->modificar(x);
     tu->getUsuario()->getAvlAct()->inOrder();
 
     
 
 }
+
