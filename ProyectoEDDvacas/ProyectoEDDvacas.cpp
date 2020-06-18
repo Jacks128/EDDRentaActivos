@@ -7,6 +7,7 @@
 #include "AVL.h"
 #include "Usuarios.h"
 #include <time.h>
+#include "Transaccion.h"
 
 /*Metodos*/
 void LoginAdmin();
@@ -19,6 +20,7 @@ void Inicio();
 void EliminarActivo();
 void MenuReportes();
 void ModificarActivo();
+void RentarActivo();
 string Aleatorio();
 void IsLogged();
 /*Variables*/
@@ -27,6 +29,11 @@ string password;
 string nombre;
 string empresa;
 string departamento;
+string idTran;
+string depa;
+string em;
+string fecha;
+string tiempoR;
 
 string nombreActivo;
 string ID;
@@ -36,7 +43,7 @@ Nodo* tu;
 Usuarios* usu;
 Activos* actu;
 MatrizDispersa* matriz;
-
+//NodoLCD* noditoL;
 NodoAVL* nodo;
 
 int main()
@@ -203,7 +210,8 @@ void MenuUsuario()
             break;
 
         case 4:
-            cout << "Gracias por jugar scrabble" << endl;
+            system("cls");
+            RentarActivo();
             exit(0);
             break;
         case 5:
@@ -458,3 +466,19 @@ void ModificarActivo() {
 
 }
 
+void RentarActivo() {
+    cout << " \n ------------------------------------------------------------------------------- \n";
+    cout << "\t\t\t       -Catalogo de Activo-\n\n";
+    tu->getUsuario()->getAvlAct()->preOrder();
+    cout << "Ingrese el ID del Activo a rentar:  ";
+    cin >> ID;
+    cout << "Ingresar Departamento:              ";
+    cin >> depa;
+    cout<< "Ingresar Empresa:                    ";
+    cin >> em;
+    cout << "Tiempo en que se realizo:           ";
+    cin >> tiempoR;
+    
+    tu->getUsuario()->getLCD()->Insertar(new Transaccion(Aleatorio(), ID, tu->getUsuario()->getNombre(), depa, em, em, tiempoR));
+    tu->getUsuario()->getLCD()->Mostrar();
+}

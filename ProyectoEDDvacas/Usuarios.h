@@ -1,6 +1,7 @@
 #pragma once
 #include <iostream>
 #include "AVL.h"
+#include "LCD.h"
 class Usuarios
 {
 public:
@@ -8,8 +9,13 @@ public:
     std::string contra;
     std::string nombre;
     AVL* avlAct;
+    LCD* lista;
     Usuarios(std::string usuario, std::string contra, std::string nombre);
 
+    void setLista(LCD* lista) {
+        this->lista = lista;
+    }
+    
     void setAvlAct(AVL* avlAct) {
         this->avlAct = avlAct;
     }
@@ -41,6 +47,11 @@ public:
     AVL* getAvlAct()
     {
         return this->avlAct;
+    }
+
+    LCD* getLCD()
+    {
+        return this->lista;
     }
 
 };

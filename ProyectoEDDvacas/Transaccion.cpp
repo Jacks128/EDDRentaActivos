@@ -1,8 +1,9 @@
 #include "Transaccion.h"
-Transaccion::Transaccion(int id, Usuarios* renter, string departamento, string empresa, string date, string tiemporR)
+Transaccion::Transaccion(string idt, string IDa, string renter, string departamento, string empresa, string date, string tiemporR)
 {
-    this->ID = id;
+    this->IDtran = idt;
     this->rentador = renter;
+    this->IDa = IDa;
     this->depa = departamento;
     this->empresa = empresa;
     this->fecha = date;
