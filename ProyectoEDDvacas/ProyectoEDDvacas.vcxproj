@@ -149,6 +149,7 @@
   <ItemGroup>
     <ClCompile Include="Activos.cpp" />
     <ClCompile Include="AVL.cpp" />
+    <ClCompile Include="Cola.cpp" />
     <ClCompile Include="LCD.cpp" />
     <ClCompile Include="MatrizDispersa.cpp" />
     <ClCompile Include="ProyectoEDDvacas.cpp" />
@@ -158,6 +159,7 @@
   <ItemGroup>
     <ClInclude Include="Activos.h" />
     <ClInclude Include="AVL.h" />
+    <ClInclude Include="Cola.h" />
     <ClInclude Include="LCD.h" />
     <ClInclude Include="MatrizDispersa.h" />
     <ClInclude Include="Transaccion.h" />

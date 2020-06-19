@@ -2,6 +2,7 @@
 #include <iostream>
 #include "AVL.h"
 #include "LCD.h"
+#include "Cola.h"
 class Usuarios
 {
 public:
@@ -9,13 +10,16 @@ public:
     std::string contra;
     std::string nombre;
     AVL* avlAct;
+    Cola* colita;
     LCD* lista;
     Usuarios(std::string usuario, std::string contra, std::string nombre);
 
     void setLista(LCD* lista) {
         this->lista = lista;
     }
-    
+    void setCola(Cola* id) {
+        this->colita = id;
+    }
     void setAvlAct(AVL* avlAct) {
         this->avlAct = avlAct;
     }
@@ -52,6 +56,10 @@ public:
     LCD* getLCD()
     {
         return this->lista;
+    }
+    Cola* getCola()
+    {
+        return this->colita;
     }
 
 };

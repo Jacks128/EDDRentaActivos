@@ -1,0 +1,6 @@
+digraph G{
+node [shape = egg, color = purple];
+label = "REPORTE ACTIVOS QUE TENGO RENTADO";
+x00068CB0[label =" ID: 7RR1BeSXij4LGJ8\nDepartamento: chimal\nEmpresa: jugueton " ] 
+x00068CB0-> x00000000
+}

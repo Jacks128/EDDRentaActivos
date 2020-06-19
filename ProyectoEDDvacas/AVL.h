@@ -45,6 +45,7 @@ private:
     NodoAVL* insertarN(Activos *activos, NodoAVL* root);
     NodoAVL* deleteNode(NodoAVL* node, string ID);
     NodoAVL* searchNode(NodoAVL* node, string ID);
+    NodoAVL* searchNode2(NodoAVL* node, string ID);
     int altura(NodoAVL* nodo);
     int mayor(int n1, int n2);
     int indice;
@@ -53,25 +54,28 @@ private:
     NodoAVL* leftright(NodoAVL* n1);
     NodoAVL* rightleft(NodoAVL* n2);
     void inOrder(NodoAVL* a);
+    void catalogo(NodoAVL* a);
     void preOrder(NodoAVL* a);
     string ejecucion(NodoAVL* eje);
     
 public:
    
     NodoAVL* root;
-    NodoAVL* get() {
+    NodoAVL* getNodo() {
         return this->root;
     }
     AVL();
     void modificar(string id);
+    void buscar(string id);
     void insertar(Activos* activos);
     void deleter(string id);
     void inOrder();
     void preOrder();
+    void catalogo();
     void graficaravl();
     void caca(NodoAVL* node);
     void addNode(NodoAVL* node);
-   ;
+   
    
 
 

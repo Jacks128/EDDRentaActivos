@@ -429,6 +429,7 @@ void MatrizDispersa::magia()
         depHelper = empHelper->right;
         while (depHelper)
         {
+           // cout << depHelper->getUsuario()->getNombre()+" ";
              juntadoralv+= depHelper->getUsuario()->getNombre() + "[label=\"" + depHelper->getUsuario()->getNombre() + "\"]\n";
              auxright = depHelper->getUsuario()->getNombre();
             //depHelper = depHelper->right;
@@ -497,7 +498,7 @@ void MatrizDispersa::magia()
         while (tempx)
         {
             
-            cout << tempx->getUsuario()->getNombre();
+            cout << tempx->getUsuario()->getNombre()+" ";
             tempx = tempx->right;
             
         }
@@ -518,8 +519,31 @@ void MatrizDispersa::Catalogo(string usuario) {
         {
             
             if (tempx->miUsu->getUsuario() != usuario) {
-                cout << "ACTIVOS DE " + tempx->getUsuario()->getNombre()+"\n";
-                tempx->getUsuario()->getAvlAct()->inOrder();
+                cout << "\nACTIVOS DE " + tempx->getUsuario()->getNombre()+"\n";
+                tempx->getUsuario()->getAvlAct()->catalogo();
+            }
+            tempx = tempx->right;
+        }
+        cout << "\n";
+        tempy = tempy->down;
+    }
+
+}
+
+void MatrizDispersa::SearchInMatrix(string usuario,string ID) {
+    Nodo* tempx = 0;
+    Nodo* tempy = header->down;
+
+    while (tempy)
+    {
+        tempx = tempy->right;
+        while (tempx)
+        {
+
+            if (tempx->miUsu->getUsuario() != usuario) {
+                //cout << "\nACTIVOS DE " + tempx->getUsuario()->getNombre() + "\n";
+                tempx->getUsuario()->getAvlAct()->buscar(ID);
+              //  tempx->getUsuario()->getAvlAct()->graficaravl();
             }
             tempx = tempx->right;
         }

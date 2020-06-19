@@ -39,6 +39,9 @@
     <ClCompile Include="LCD.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="Cola.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Usuarios.h">
@@ -57,6 +60,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="LCD.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Cola.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

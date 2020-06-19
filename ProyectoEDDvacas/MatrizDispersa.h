@@ -79,6 +79,7 @@ public:
     //Nodo* getnRentador();
     void graficar();
     void Catalogo(string usuario);
+    void SearchInMatrix(string usuario, string ID);
     void asignActives(Activos* activo, Nodo* rentador);
     Nodo* createCompany(string empresa);
     Nodo* createDepartment(string depa);

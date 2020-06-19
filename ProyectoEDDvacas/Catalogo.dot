@@ -6,19 +6,25 @@ node0 [label=""];
 huehue[label = "huehue" ]; 
 chimal[label = "chimal" ]; 
 peten[label = "peten" ]; 
+guatemala[label = "guatemala" ]; 
 node0->huehue[dir=both];  
 huehue->chimal[dir=both];  
 chimal->peten[dir=both];  
+peten->guatemala[dir=both];  
 claro[label = "claro" ]
 tigo[label = "tigo" ]
 jugueton[label = "jugueton" ]
+max[label = "max" ]
 node0->claro[dir=both];
 claro->tigo[dir=both];
 tigo->jugueton[dir=both];
+jugueton->max[dir=both];
 pedro[label="pedro"]
 pedro->juan[constraint=false, dir=both];{rank=same; claro; pedro; juan;}
 pedro->jacky[dir=both];pedro->huehue[dir=both];juan->peten[dir=both];jacky[label="jacky"]
 {rank=same; tigo; jacky;}
 susel[label="susel"]
 {rank=same; jugueton; susel;}
-susel->chimal[dir=both];{rank=same; node0; huehue; chimal; peten;}}
+susel->chimal[dir=both];Mercedes[label="Mercedes"]
+{rank=same; max; Mercedes;}
+Mercedes->guatemala[dir=both];{rank=same; node0; huehue; chimal; peten; guatemala;}}

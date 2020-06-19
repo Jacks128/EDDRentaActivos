@@ -38,6 +38,9 @@ public:
         this->tiempoR = tiempoR;
     }
 
+    /*void setBandera(bool bandera) {
+        this->bandera = bandera;
+    }*/
     string getId() {
         return this->IDtran;
     }
@@ -45,6 +48,9 @@ public:
         return this->IDa;
     }
 
+/*    bool getBandera() {
+        return this->bandera;
+    }*/
     string getRentador()
     {
         return this->rentador;

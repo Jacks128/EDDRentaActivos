@@ -187,7 +187,7 @@ void MenuUsuario()
         cout << "\t    ############ 3.    Modificar Activo    ############\n";
         cout << "\t    ############ 4.     Rentar Activos     ############\n";
         cout << "\t    ############ 5.    Activos Rentados    ############\n";
-        cout << "\t    ############ 6.  Mis Activos Rentados  ############\n";
+        cout << "\t    ############ 6.       Mis Activos      ############\n";
         cout << "\t    ############ 7.      Cerrar Sesion     ############\n";
         cout << "\t    ############ 8.          Salir         ############\n";
         cin >> m;
@@ -216,12 +216,12 @@ void MenuUsuario()
             break;
         case 5:
             system("cls");
-            tu->getUsuario()->getAvlAct()->graficaravl();
+            tu->getUsuario()->getCola()->graficar();
             break;
 
         case 6:
             system("cls");
-            cout << "Reportes";
+            tu->getUsuario()->getAvlAct()->graficaravl();
             break;
 
         case 7:
@@ -371,7 +371,7 @@ void AgregarActivo() {
     getline(cin, descripcion);
     //cin >> descripcion;
    
-    tu->getUsuario()->getAvlAct()->insertar(new Activos(Aleatorio(), nombreActivo, descripcion));
+    tu->getUsuario()->getAvlAct()->insertar(new Activos(Aleatorio(), nombreActivo, descripcion, false));
    // arbolavl->insertar( );  
 
     cout << "\t\t\t       - Tus Activos -\n\n";
@@ -455,10 +455,10 @@ void ModificarActivo() {
     cout << "\t\t\t- Bienvenido a la seccion Modificar -\n\n";
 
     tu->getUsuario()->getAvlAct()->inOrder();
-    cout << "\t\t\t- Elija el ID a mosficar -\n\n";
+    cout << "\t\t\t- Elija el ID a modificar -\n\n";
     
-    getline(cin, x);
-    //cin >> x;
+    
+    cin >> x;
     tu->getUsuario()->getAvlAct()->modificar(x);
     tu->getUsuario()->getAvlAct()->inOrder();
 
@@ -468,6 +468,7 @@ void ModificarActivo() {
 
 void RentarActivo() {
     string usuarioActual;
+    string IDAct;
     cout << " \n ------------------------------------------------------------------------------- \n";
     cout << "\t\t\t       -Catalogo de Activo-\n\n";
     usuarioActual = tu->getUsuario()->getUsuario();
@@ -478,10 +479,13 @@ void RentarActivo() {
     cin >> depa;
     cout<< "Ingresar Empresa:                    ";
     cin >> em;
-    cout << "Tiempo en que se realizo:           ";
-    cin >> tiempoR;
+
     
-    tu->getUsuario()->getLCD()->Insertar(new Transaccion(Aleatorio(), ID, tu->getUsuario()->getNombre(), depa, em, em, tiempoR));
-  tu->getUsuario()->getLCD()->Mostrar();
+    tu->getUsuario()->getLCD()->Insertar(new Transaccion(Aleatorio(), ID, tu->getUsuario()->getNombre(), depa, em, em, em));
+    matriz->SearchInMatrix(usuarioActual, ID);
+    tu->getUsuario()->getCola()->push(ID, em,depa);
+   // tu->getUsuario()->getAvlAct()->buscar(ID);
+
+    tu->getUsuario()->getLCD()->Mostrar();
 }
 

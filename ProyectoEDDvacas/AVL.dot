@@ -1,0 +1,8 @@
+digraph D { 
+ node [shape = egg, color = purple];
+labelloc = "t;"label = "REPORTE AVL DE CATEGORIAS ";
+"MglIUdtHU4K3Jxa" [label =" ID: MglIUdtHU4K3Jxa\nNombre: s " ]
+ "MglIUdtHU4K3Jxa" -> 0 [label = 0] 
+"MglIUdtHU4K3Jxa" [label =" ID: MglIUdtHU4K3Jxa\nNombre: s " ] 
+"MglIUdtHU4K3Jxa" -> 1 [label = 0]
+}

@@ -37,6 +37,18 @@ void NodoAVL::add(Activos* acti) {
 
 }
 
+void AVL::catalogo(NodoAVL* a)
+{
+	if (a != nullptr) {
+
+		
+			catalogo(a->left);
+			cout << "ID ->" + a->getActive()->getID() + " Nombre: " + a->getActive()->getNombreActivo() + " Descripcion: " + a->getActive()->getDescripcion() + " \n";
+			catalogo(a->right);
+
+			
+	}
+}
 void AVL::inOrder(NodoAVL* a) 
 {
 	if (a != nullptr) {
@@ -73,6 +85,10 @@ void AVL::preOrder() {
 	preOrder(root);
 }
 
+void AVL::catalogo() {
+	cout << "Activos Disponibles: \n";
+	catalogo(root);
+}
 void AVL::inOrder() {
 	cout << "Recorrido inorden de Activos: \n\n";
 	inOrder(root);
@@ -96,9 +112,15 @@ void AVL::modificar(string id) {
 	root = searchNode(root, id);
 
 }
+void AVL::buscar(string id) {
+	//NodoAVL* flu = new NodoAVL(act);
+	root = searchNode2(root, id);
+
+}
 
 void AVL::insertar(Activos* activos) {
 	NodoAVL* aux = new NodoAVL(activos);
+	
 	if(root==nullptr){
 		root=aux;
 	}
@@ -290,6 +312,29 @@ NodoAVL* AVL::rightleft(NodoAVL* n1)
 	n1->right = leftleft(n1->right);
 	return rightright(n1);
 }
+NodoAVL* AVL::searchNode2(NodoAVL* node, string ID) {
+	if (node == nullptr) {
+		cout << "No existe ese activo, o el arbol esta vacio \n";
+		return 0;
+	}
+	else if (node->getActive()->getID() == ID)
+	{
+		
+		node->getActive()->setBandera(true);
+
+		cout << " \nEl activo rentado es: ID ->" + node->getActive()->getID() + " \nNombre: " + node->getActive()->getNombreActivo() + "\n Descripcion: " + node->getActive()->getDescripcion() + " ha sido rentado "" \n";
+		//node->getActive()->getID();
+		return node;
+		//return node;
+	}
+	else if (ID.compare(node->getActive()->getID()) == -1) {
+		return searchNode(node->left, ID);
+	}
+	else
+	{
+		return searchNode(node->right, ID);
+	}
+}
 
 NodoAVL* AVL::searchNode(NodoAVL* node, string ID) {
 	if (node == nullptr) {
@@ -302,7 +347,8 @@ NodoAVL* AVL::searchNode(NodoAVL* node, string ID) {
 		//node->getActive();
 		cout << "El activo a modificar es ID ->" + node->getActive()->getID() + " Nombre: "+ node->getActive()->getNombreActivo() +  " Descripcion : "+ node->getActive()->getDescripcion() +" \n";
 		cout << "Ingrese la nueva descripcion: \n";
-		cin >> des;
+		getline(cin,des);
+		getline(cin, des);
 		node->getActive()->setDescripcion(des);
 		cout << " \nEl activo modificado es: ID ->" + node->getActive()->getID() + " Nombre: " + node->getActive()->getNombreActivo() + " Descripcion : " + node->getActive()->getDescripcion() + " \n";
 		return node;
@@ -386,7 +432,7 @@ void AVL::graficaravl() {
 	ofstream archivo("AVL.dot");
 
 	archivo << "digraph D { \n node [shape = egg, color = purple];\n";
-	archivo << "labelloc = \"t;\"label = \"REPORTE AVL DE CATEGORIAS ++\";\n";
+	archivo << "labelloc = \"t;\"label = \"REPORTE AVL DE CATEGORIAS \";\n";
 	if (root != nullptr)
 	{
 		AVL::indice = 0;

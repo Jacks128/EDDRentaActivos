@@ -9,10 +9,16 @@ public:
     string id;
     string nombreActivo;
     string descripcion;
+    bool bandera;
 
-    Activos(string id, string nombreActivo, string descripcion);
+    Activos(string id, string nombreActivo, string descripcion, bool bandera);
 
-
+    bool getBandera() {
+        return this->bandera;
+    }
+    void setBandera(bool bandera) {
+        this->bandera = bandera;
+    }
     void setID(string id)
     {
         this->id = id;

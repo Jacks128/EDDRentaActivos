@@ -1,7 +1,3 @@
 ﻿  AVL.cpp
 C:\Users\Jacky\source\repos\ProyectoEDDvacas\ProyectoEDDvacas\AVL.cpp(7,13): warning C4553: '==': result of expression not used; did you intend '='?
-  MatrizDispersa.cpp
-C:\Users\Jacky\source\repos\ProyectoEDDvacas\ProyectoEDDvacas\MatrizDispersa.cpp(335,11): warning C4101: 'depa': unreferenced local variable
-C:\Users\Jacky\source\repos\ProyectoEDDvacas\ProyectoEDDvacas\MatrizDispersa.cpp(334,11): warning C4101: 'empre': unreferenced local variable
-  Generating Code...
   ProyectoEDDvacas.vcxproj -> C:\Users\Jacky\source\repos\ProyectoEDDvacas\Debug\ProyectoEDDvacas.exe
